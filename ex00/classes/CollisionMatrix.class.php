@@ -3,15 +3,19 @@
 class CollisionMatrix extends Base
 {
 	protected $table = array();
+	protected $numRows;
+	protected $numCols;
 
-	public function __construct()
+	public function __construct($numRows, $numCols)
 	{
+		$this->setNumRows($numRows);
+		$this->setNumCols($numCols);
 		$i = -1;
-		while (++$i < GAME_NUM_COLS)
+		while (++$i < $numCols)
 		{
 			$this->table[$i] = array();
 			$j = -1;
-			while (++$j < GAME_NUM_ROWS)
+			while (++$j < $numRows)
 			{
 				$this->table[$i][$j] = 0;
 			}
@@ -46,11 +50,13 @@ class CollisionMatrix extends Base
 
 	public function collision(MapObject $o)
 	{
+		$numRows = $this->getNumRows();
+		$numCols = $this->getNumCols();
 		$i = -1;
-		while (++$i < GAME_NUM_COLS)
+		while (++$i < $numCols)
 		{
 			$j = -1;
-			while (++$j < GAME_NUM_ROWS)
+			while (++$j < $numRows)
 			{
 				// north or south
 				if ($o->getDirection() % 2 === 1)

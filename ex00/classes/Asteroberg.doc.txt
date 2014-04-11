@@ -1,0 +1,9 @@
+An Asteroberg is a Block instance with preset values regarding
+the sprite and size. These are the default values:
+
+name = "Astero Berg of Wrath";
+w = 10
+h = 10
+pp = 0;
+pv = 9999;
+sprite = "/ex00/img/Asteroberg_{{dir}}.png";

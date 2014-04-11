@@ -1,0 +1,2 @@
+The Base class is a helper class that provides easy access to
+overridable getters and setters through the use of `__call()`.
