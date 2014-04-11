@@ -30,12 +30,6 @@ class Game extends Base
 		return $collisionMatrix->collision($o);
 	}
 
-	// lock players, ships and blocks so the game can start
-	public function lock()
-	{
-		$this->setLocked(true);
-	}
-
 	public function addShip(Ship $ship)
 	{
 		if ($this->getLocked())
@@ -59,7 +53,7 @@ class Game extends Base
 
 	public function start()
 	{
-		$this->lock();
+		$this->setLocked(true);
 		$this->playTurn();
 	}
 
