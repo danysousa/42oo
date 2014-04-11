@@ -62,3 +62,32 @@ for the current player.
 Action name: `board`
 Type: `GET`
 Return type: `text/html`
+
+### View game information
+
+View bunch of information about the current game.
+
+Action name: `display`
+Type: `GET`
+Return type: `text/html`
+
+### Move an object
+
+Action name: `move`
+Type: `GET`
+Return type: `text/html`
+
+Params:
+* `id`: object id
+* `x`: one of [-1, 1], incompatible with `y`
+* `y`: one of [-1, 1], incompatible with `x`
+
+### Rotate an object
+
+Action name: `rotate`
+Type: `GET`
+Return type: `text/html`
+
+Params:
+* `id`: object id
+* `dir`: the new direction of the object
