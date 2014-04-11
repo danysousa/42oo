@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 
 class Game extends Base
@@ -113,3 +114,61 @@ Ship[] playerShips(Player $p)
 
 
 Ship[] currentPlayerShips()
+=======
+The Game class represents the internal state of a game. A Game
+has the following concepts:
+* players: they are the owners of ships and can battle against
+each other. They can be either active or passive, like the
+Switzerland player ! :-)
+* ships: combat units owned by the players.
+* blocks: obstacles on the map that are very hard to get rid of
+and can break a ship that collides with them.
+
+A game instance can be constructed like so:
+$game = new Game();
+
+Class methods:
+
+static bool exists()
+Check if a game in in progress.
+
+static void loadFromFile()
+Load a game from its save file.
+
+These are the public instance methods:
+
+bool hasCollision(MapObject $o)
+Checks if the MapObject can be placed in the game. Returns true if
+it is possible or false if it would create a collision.
+
+void addShip(Ship $ship)
+Adds the $ship to the Game.
+
+void addBlock(Block $block)
+Adds the $block to the Game.
+
+void addPlayer(Player $player)
+Adds the Player to the game.
+
+void start()
+Locks the game for registrations and plays the first turn.
+
+void reload()
+Deletes the currently saved game.
+
+void playTurn()
+Allow the next player to play his turn.
+
+void save()
+Saves the game to '../game.txt'.
+
+string toJson()
+Returns the ships and blocks as a JSON-able object.
+
+Ship[] playerShips(Player $p)
+Returns the ships that belong to a given player.
+
+Ship[] currentPlayerShips()
+Returns the ships that belong to the player that is currently playing,
+based on the session.
+>>>>>>> aa25931e627ce2c0a1512d3314f75a747091b47f

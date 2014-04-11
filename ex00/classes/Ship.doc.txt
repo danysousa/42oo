@@ -1,0 +1,2 @@
+The Ship class represents a MapObject that can be used by players
+to attack other players.

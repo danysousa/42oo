@@ -1,0 +1,10 @@
+A Player of the Game.
+
+Can be constructed like so:
+
+$player = new Player('Lord Baltimus', Player::ACTIVE, session_id());
+
+Methods:
+
+string toJson();
+Get a JSON representation of the player.
