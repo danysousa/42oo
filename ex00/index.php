@@ -65,6 +65,7 @@ else if (get('action') === 'start')
 {
 	$game->start();
 	$game->save();
+	json(true);
 	die();
 }
 else if (get('action') === 'player')
