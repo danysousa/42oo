@@ -34,6 +34,7 @@ function json($obj)
 	echo json_encode($obj);
 }
 
+// Add a player and it's ship
 if (get('action') === 'addPlayer')
 {
 	if (count($game->getShips()) >= GAME_MAX_NUM_SHIPS)
@@ -48,7 +49,8 @@ if (get('action') === 'addPlayer')
 		$ship = get('ship');
 		$ship = new $ship(0, 0, $player);
 		$game->addPlayer($player);
-		while ($game->getCollisionMatrix()->collision($ship))
+		// While the ship creates a collision, we try new coordinates
+		while ($game->hasCollision($ship))
 		{
 			$ship->setX(rand(0, GAME_NUM_ROWS - 1 - $ship::W));
 			$ship->setY(rand(0, GAME_NUM_COLS - 1  - $ship::H));

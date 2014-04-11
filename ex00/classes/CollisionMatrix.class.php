@@ -20,12 +20,20 @@ class CollisionMatrix extends Base
 
 	public function addObject(MapObject $o)
 	{
-		$i = $o->getY();
-		while (++$i < $o->getY() + $o->getH())
+		// north of south
+		if ($o->getDirection() % 2 === 1)
 		{
-			$j = $o->getX();
-			while (++$j < $o->getX() + $o->getW())
-				$this->table[$i][$j] = 1;
+			$i = $o->getY();
+			while (++$i < $o->getY() + $o->getH())
+			{
+				$j = $o->getX();
+				while (++$j < $o->getX() + $o->getW())
+					$this->table[$i][$j] = 1;
+			}
+		}
+		else
+		{
+			// west / east
 		}
 	}
 
@@ -37,10 +45,18 @@ class CollisionMatrix extends Base
 			$j = -1;
 			while (++$j < GAME_NUM_ROWS)
 			{
-				if ($o->getX() <= $j && $j <= $o->getX() + $o->getW() && $o->getY() <= $i && $i <= $o->getY() + $o->getH())
+				// north or south
+				if ($o->getDirection() % 2 === 1)
 				{
-					if ($this->table[$i][$j] == 1)
-						return true;
+					if ($o->getX() <= $j && $j <= $o->getX() + $o->getW() && $o->getY() <= $i && $i <= $o->getY() + $o->getH())
+					{
+						if ($this->table[$i][$j] == 1)
+							return true;
+					}
+				}
+				else
+				{
+					// west / east
 				}
 			}
 		}

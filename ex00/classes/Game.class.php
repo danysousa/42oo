@@ -7,13 +7,27 @@ class Game extends Base
 	protected $players = array();
 	protected $currentPlayer;
 	protected $locked = false;
-	protected $collisionMatrix;
 	const FILE = '/../game.txt';
 
 	public function __construct()
 	{
 		$this->setCurrentPlayer(0);
-		$this->collisionMatrix = new CollisionMatrix();
+	}
+
+	public function hasCollision(MapObject $o)
+	{
+		$collisionMatrix = new CollisionMatrix();
+		foreach ($this->getShips() as $s)
+		{
+			if ($s !== $o)
+				$collisionMatrix->addObject($s);
+		}
+		foreach ($this->getBlocks() as $b)
+		{
+			if ($b !== $o)
+				$collisionMatrix->addObject($b);
+		}
+		return $collisionMatrix->collision($o);
 	}
 
 	// lock players, ships and blocks so the game can start
@@ -27,7 +41,6 @@ class Game extends Base
 		if ($this->getLocked())
 			throw new Exception('Cannot add ship as game is locked.');
 		$this->ships[] = $ship;
-		$this->collisionMatrix->addObject($ship);
 	}
 
 	public function addBlock(Block $block)
@@ -35,7 +48,6 @@ class Game extends Base
 		if ($this->getLocked())
 			throw new Exception('Cannot add block as game is locked.');
 		$this->blocks[] = $block;
-		$this->collisionMatrix->addObject($block);
 	}
 
 	public function addPlayer(Player $player)

@@ -111,6 +111,8 @@ abstract class MapObject extends Base
 		return array(
 			'name' => $this->getName(),
 			'sprite' => $this->getSprite(),
+			'speed' => $this->getSpeed(),
+			'inertia' => $this->getInertia(),
 			'x' => $this->getX(),
 			'y' => $this->getY(),
 			'w' => $this->getW(),

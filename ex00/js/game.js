@@ -30,21 +30,19 @@
 
 	function drawObjects(objects)
 	{
-		console.dir('fwgew');
 		objects.forEach(function(el, i)
 		{
 			if (el.alive) {
 				var img = new Image(el.w * factor.x, el.h * factor.y);
+				// set the right sprite for the given object direction
 				img.src = el.sprite.replace('{{dir}}', el.direction);
 				img.onload = function()
 				{
-
-					console.dir(el);
-					ctx.save();
-					ctx.moveTo(el.x * factor.x, el.y * factor.y);
-					//ctx.rotate(-el.direction * 90 * Math.PI / 180);
-					ctx.drawImage(img, 0, 0, el.w * factor.x, el.h * factor.y);
-					ctx.restore();
+					// west or east
+					if (el.direction % 2 === 0)
+						ctx.drawImage(img, el.x * factor.x, el.y * factor.y, el.h * factor.y, el.w * factor.x);
+					else
+						ctx.drawImage(img, el.x * factor.x, el.y * factor.y, el.w * factor.x, el.h * factor.y);
 				}
 			}
 		});
@@ -70,5 +68,7 @@
 			$scope.objects = objects;
 		});
 	});
+
+	Mousetrap.bind('up', function()
 
 })();
