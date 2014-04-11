@@ -69,6 +69,4 @@
 		});
 	});
 
-	Mousetrap.bind('up', function()
-
 })();

@@ -98,12 +98,12 @@ abstract class MapObject extends Base
 
 	public function improveInertia($pp)
 	{
-		$this->speed += $pp;
+		$this->inertia -= $pp;
 	}
 
 	public function improvePv($pp)
 	{
-		$this->speed += $pp;
+		$this->pv += $pp;
 	}
 
 	public function toJson()
@@ -113,6 +113,8 @@ abstract class MapObject extends Base
 			'sprite' => $this->getSprite(),
 			'speed' => $this->getSpeed(),
 			'inertia' => $this->getInertia(),
+			'pv' => $this->getPv(),
+			'shield' => $this->getShield(),
 			'x' => $this->getX(),
 			'y' => $this->getY(),
 			'w' => $this->getW(),

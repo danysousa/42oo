@@ -34,6 +34,13 @@ class CollisionMatrix extends Base
 		else
 		{
 			// west / east
+			$i = $o->getY();
+			while (++$i < $o->getY() + $o->getW())
+			{
+				$j = $o->getX();
+				while (++$j < $o->getX() + $o->getH())
+					$this->table[$i][$j] = 1;
+			}
 		}
 	}
 
@@ -57,6 +64,11 @@ class CollisionMatrix extends Base
 				else
 				{
 					// west / east
+					if ($o->getX() <= $j && $j <= $o->getX() + $o->getH() && $o->getY() <= $i && $i <= $o->getY() + $o->getW())
+					{
+						if ($this->table[$i][$j] == 1)
+							return true;
+					}
 				}
 			}
 		}
