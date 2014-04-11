@@ -14,11 +14,7 @@ if (Game::exists())
 else
 {
 	$game = new Game();
-	$game->addPlayer($neutralPlayer = new Player("Switzerland", Player::INACTIVE));
-	$game->addPlayer($p1 = new Player("Conrad", Player::ACTIVE));
-	$game->addPlayer($p2 = new Player("Arthur", Player::ACTIVE));
-	$game->addShip(new SwordOfAbsolution(0, 0, $p1));
-	$game->addShip(new HonorableDuty(149 - HonorableDuty::W, 99 - HonorableDuty::H, $p2));
+	$game->addPlayer($neutralPlayer = new Player("Switzerland", Player::INACTIVE, null));
 	$game->addBlock(new Asteroberg(30, 30, $neutralPlayer));
 	// add ships etc...
 }
@@ -29,12 +25,56 @@ function get($k)
 		return false;
 	return $_GET[$k];
 }
-
-if (get('action') === 'objects')
+function json($obj)
 {
 	header('content-type: application/json');
-	echo json_encode($game->toJson());
-	die();
+	echo json_encode($obj);
 }
 
-include 'templates/game.php';
+if (get('action') === 'addPlayer')
+{
+	if (get('name') !== false && get('ship') !== false)
+	{
+		$name = get('name');
+		$player = new Player($name, Player::ACTIVE, session_id());
+		$ship = get('ship');
+		$x = rand(0, 149 - $ship::W);
+		$y = rand(0, 99 - $ship::H);
+		$game->addShip(new $ship($x, $y, $player));
+		$game->addPlayer($player);
+		$game->save();
+		json(true);
+		die();
+	}
+}
+else if (get('action') === 'start')
+{
+	$game->start();
+	$game->save();
+	die();
+}
+else if (get('action') === 'reset')
+{
+	$game->reload();
+	session_destroy();
+	json(true);
+	die();
+}
+else if (get('action') === 'objects')
+{
+	json($game->toJson());
+	die();
+}
+else if (get('action') === 'board')
+{
+	include 'templates/game.php';
+	die();
+}
+else if (get('action') === 'playTurn')
+{
+}
+else
+{
+	header('location: /ex00/index.php?action=board');
+	die();
+}

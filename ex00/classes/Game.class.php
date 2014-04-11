@@ -6,30 +6,44 @@ class Game extends Base
 	protected $blocks = array();
 	protected $players = array();
 	protected $currentPlayer;
-	const FILE = '/game.save';
+	protected $locked = false;
+	const FILE = '/../game.txt';
 
 	public function __construct()
 	{
 		$this->setCurrentPlayer(0);
 	}
 
+	// lock players, ships and blocks so the game can start
+	public function lock()
+	{
+		$this->setLocked(true);
+	}
+
 	public function addShip(Ship $ship)
 	{
+		if ($this->getLocked())
+			throw new Exception('Cannot add ship as game is locked.');
 		$this->ships[] = $ship;
 	}
 
 	public function addBlock(Block $block)
 	{
+		if ($this->getLocked())
+			throw new Exception('Cannot add block as game is locked.');
 		$this->blocks[] = $block;
 	}
 
 	public function addPlayer(Player $player)
 	{
+		if ($this->getLocked())
+			throw new Exception('Cannot add player as game is locked.');
 		$this->players[] = $player;
 	}
 
 	public function start()
 	{
+		$this->lock();
 		$this->playTurn();
 	}
 
@@ -49,6 +63,8 @@ class Game extends Base
 
 	public function playTurn()
 	{
+		if (!$this->getLocked())
+			throw new Exception('Cannot play a turn while the game is unlocked.');
 		$this->updateCurrentPlayer();
 	}
 

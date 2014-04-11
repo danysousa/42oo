@@ -42,4 +42,22 @@
 			}
 		});
 	});
+
+	var game = angular.module('gameApp', []);
+ 
+	game.controller('ActionFormCtrl', function ($scope, $http)
+	{
+		$http.get('/ex00/index.php?action=objects').success(function(data) {
+			$scope.objects = data;
+			data.forEach(function(el, i) {
+				if (el.alive) {
+					var img = new Image(el.w * factor.x, el.h * factor.y);
+					img.src = el.sprite;
+					img.onload = function() {
+						ctx.drawImage(img, el.x * factor.x, el.y * factor.y, el.w * factor.x, el.h * factor.y);
+					}
+				}
+			});
+		});
+	});
 })();

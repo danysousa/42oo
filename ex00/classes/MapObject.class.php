@@ -105,7 +105,8 @@ abstract class MapObject extends Base
 			'y' => $this->getY(),
 			'w' => $this->getW(),
 			'h' => $this->getH(),
-			'alive' => $this->isAlive()
+			'alive' => $this->isAlive(),
+			'player' => $this->getPlayer()->getSessionId()
 		);
 	}
 }
