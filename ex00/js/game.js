@@ -7,7 +7,7 @@
 		y: canvas.height / 100
 	};
 
-	function grid(x, y)
+	function drawGrid(x, y)
 	{
 		var color = "#999999";
 		var i = -1;
@@ -28,11 +28,9 @@
 		}
 	}
 
-	grid(150, 100);
-
-	$.get("/ex00/index.php?action=objects", function(data)
+	function drawObjects(objects)
 	{
-		data.forEach(function(el, i) {
+		objects.forEach(function(el, i) {
 			if (el.alive) {
 				var img = new Image(el.w * factor.x, el.h * factor.y);
 				img.src = el.sprite;
@@ -41,15 +39,26 @@
 				}
 			}
 		});
-	});
+	}
 
 	var game = angular.module('gameApp', []);
  
 	game.controller('ActionFormCtrl', function ($scope, $http)
 	{
-		$http.get('/ex00/index.php?action=objects').success(function(data) {
-			$scope.objects = data;
-			data.forEach(function(el, i) {
+		$http.get('/ex00/index.php?action=player').success(function(player)
+		{
+			$scope.player = player;
+		});
+		$http.get('/ex00/index.php?action=playerShips').success(function(ships)
+		{
+			$scope.playerShips = ships;
+		});
+		$http.get('/ex00/index.php?action=objects').success(function(objects)
+		{
+			ctx.clearRect(0, 0, canvas.height, canvas.width);
+			drawGrid(150, 100);
+			drawObjects(objects);
+			objects.forEach(function(el, i) {
 				if (el.alive) {
 					var img = new Image(el.w * factor.x, el.h * factor.y);
 					img.src = el.sprite;
@@ -58,6 +67,8 @@
 					}
 				}
 			});
+			$scope.objects = objects;
 		});
 	});
+
 })();

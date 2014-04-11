@@ -2,7 +2,9 @@
 
 session_start();
 
-define('GAME_MAX_NUM_SHIPS', 4);
+define('GAME_MAX_NUM_SHIPS', 2);
+define('GAME_NUM_ROWS', 150);
+define('GAME_NUM_COLS', 100);
 
 spl_autoload_register(function($class)
 {
@@ -17,8 +19,7 @@ else
 {
 	$game = new Game();
 	$game->addPlayer($neutralPlayer = new Player("Switzerland", Player::INACTIVE, null));
-	$game->addBlock(new Asteroberg(rand(0, 149 - Asteroberg::W), rand(0, 99 - Asteroberg::H), $neutralPlayer));
-	// add ships etc...
+	$game->addBlock(new Asteroberg(rand(0, GAME_NUM_ROWS - 1 - Asteroberg::W), rand(0, GAME_NUM_COLS - 1 - Asteroberg::H), $neutralPlayer));
 }
 
 function get($k)
@@ -49,8 +50,8 @@ if (get('action') === 'addPlayer')
 		$game->addPlayer($player);
 		while ($game->getCollisionMatrix()->collision($ship))
 		{
-			$ship->setX(rand(0, 149 - $ship::W));
-			$ship->setY(rand(0, 99 - $ship::H));
+			$ship->setX(rand(0, GAME_NUM_ROWS - 1 - $ship::W));
+			$ship->setY(rand(0, GAME_NUM_COLS - 1  - $ship::H));
 		}
 		$game->addShip($ship);
 		$game->save();
@@ -62,6 +63,24 @@ else if (get('action') === 'start')
 {
 	$game->start();
 	$game->save();
+	die();
+}
+else if (get('action') === 'player')
+{
+	foreach ($game->getPlayers() as $p)
+	{
+		if ($p->getSessionId() === session_id())
+		{
+			json($p->toJson());
+			die();
+		}
+	}
+	json(null);
+	die();
+}
+else if (get('action') === 'playerShips')
+{
+	json($game->currentPlayerShips());
 	die();
 }
 else if (get('action') === 'reset')

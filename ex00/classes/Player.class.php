@@ -17,4 +17,13 @@ class Player extends Base
 		$this->setActive($active);
 		$this->setSessionId($sessionId);
 	}
+
+	public function toJson()
+	{
+		return array(
+			'name' => $this->getName(),
+			'id' => hash('sha512', $this->getSessionId()),
+			'active' => $this->getActive()
+		);
+	}
 }

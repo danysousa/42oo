@@ -96,4 +96,26 @@ class Game extends Base
 			$objects[] = $b->toJson();
 		return $objects;
 	}
+
+	public function playerShips(Player $p)
+	{
+		$ships = array();
+		foreach ($this->getShips() as $s)
+		{
+			if ($s->getPlayer() === $p)
+				$ships[] = $s->toJson();
+		}
+		return $ships;
+	}
+
+	public function currentPlayerShips()
+	{
+		$id = session_id();
+		foreach ($this->getPlayers() as $p)
+		{
+			if ($p->getSessionId() === $id)
+				return $this->playerShips($p);
+		}
+		return array();
+	}
 }

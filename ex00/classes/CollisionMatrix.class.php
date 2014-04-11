@@ -7,11 +7,11 @@ class CollisionMatrix extends Base
 	public function __construct()
 	{
 		$i = -1;
-		while (++$i < 100)
+		while (++$i < GAME_NUM_COLS)
 		{
 			$this->table[$i] = array();
 			$j = -1;
-			while (++$j < 150)
+			while (++$j < GAME_NUM_ROWS)
 			{
 				$this->table[$i][$j] = 0;
 			}
@@ -32,10 +32,10 @@ class CollisionMatrix extends Base
 	public function collision(MapObject $o)
 	{
 		$i = -1;
-		while (++$i < 100)
+		while (++$i < GAME_NUM_COLS)
 		{
 			$j = -1;
-			while (++$j < 150)
+			while (++$j < GAME_NUM_ROWS)
 			{
 				if ($o->getX() <= $j && $j <= $o->getX() + $o->getW() && $o->getY() <= $i && $i <= $o->getY() + $o->getH())
 				{

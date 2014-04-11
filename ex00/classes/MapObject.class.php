@@ -2,6 +2,11 @@
 
 abstract class MapObject extends Base
 {
+	const DIRECTION_WEST  = 1;
+	const DIRECTION_EAST  = 2;
+	const DIRECTION_NORTH = 3;
+	const DIRECTION_SOUTH = 4;
+
 	protected $x;
 	protected $y;
 	protected $h;
@@ -40,6 +45,8 @@ abstract class MapObject extends Base
 		$this->setInitialSpeed($speed);
 		$this->setInitialInertia($inertia);
 		$this->setInitialShield($shield);
+
+		$this->direction = rand(self::DIRECTION_WEST, self::DIRECTION_SOUTH);
 	}
 
 	public function reset()
@@ -100,13 +107,15 @@ abstract class MapObject extends Base
 	public function toJson()
 	{
 		return array(
+			'name' => $this->getName(),
 			'sprite' => $this->getSprite(),
 			'x' => $this->getX(),
 			'y' => $this->getY(),
 			'w' => $this->getW(),
 			'h' => $this->getH(),
 			'alive' => $this->isAlive(),
-			'player' => $this->getPlayer()->getSessionId()
+			'player' => $this->getPlayer()->toJson(),
+			'direction' => $this->getDirection()
 		);
 	}
 }

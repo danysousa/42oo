@@ -7,7 +7,16 @@
 
 	<div ng-app="gameApp">
 		<div ng-controller="ActionFormCtrl">
-			<input type="text">
+		<div ng-show="!!player.name">
+			<h1>Hello {{ player.name }}</h1>
+			<h2>Players currently in game</h2>
+			<ul ng-repeat="o in objects">
+				<li>{{ o.player.name }}</li>
+			</ul>
+			<h2>Choose the ship to use this turn</h2>
+			<select name="shipToUse" id="shipToUse" ng-repeat="s in playerShips">
+				<option value="{{ s.name }}">{{ s.name }}</option>
+			</select>
 		</div>
 	</div>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
