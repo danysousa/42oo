@@ -10,6 +10,14 @@ and can break a ship that collides with them.
 A game instance can be constructed like so:
 $game = new Game();
 
+Class methods:
+
+static bool exists()
+Check if a game in in progress.
+
+static void loadFromFile()
+Load a game from its save file.
+
 These are the public instance methods:
 
 bool hasCollision(MapObject $o)
@@ -36,12 +44,6 @@ Allow the next player to play his turn.
 
 void save()
 Saves the game to '../game.txt'.
-
-static bool exists()
-Check if a game in in progress.
-
-static void loadFromFile()
-Load a game from its save file.
 
 string toJson()
 Returns the ships and blocks as a JSON-able object.

@@ -1,0 +1,88 @@
+A MapObject is an object that can be placed on the Game map.
+It has a variety of attributes which allow deep customization
+and extension.
+
+All attributes have getters and setters of the form `set[PropertyName]` and
+`get[PropertyName]`.
+
+The attributes are:
+
+int $x;
+The position in X on the map.
+
+int $y;
+The position in Y on the map.
+
+int $h;
+Height.
+
+int $w;
+Width.
+
+int $initialPv;
+Initial life points. Used to reset the object if needed.
+
+int $pv;
+Life points.
+
+string $sprite;
+The sprite file. Has the format `path/to/file_{{dir}}.png` where {{dir}} is one
+of [0, 1, 2, 3].
+
+int $initialSpeed;
+Initial speed. Used to reset the object if needed.
+
+int $speed;
+The speed. The length of every move made by the ship.
+
+int $initialInertia;
+Initial inertia. Used to reset the object if needed.
+
+int $inertia;
+The minimum number of moves before the object can stop and rotate.
+
+int $initialShield;
+Initial shield strength. Used to reset the object if needed.
+
+int $shield;
+The strength of the shield.
+
+Weapon[] $weapons;
+An array of weapons the object has.
+
+Player $player;
+The owner of the object.
+
+string $name;
+The name of the object for visual comprehension in HTML.
+
+int $direction;
+Direction the object is facing. One of [MapObject::DIRECTION_WEST, MapObject::DIRECTION_SOUTH,
+MapObject::DIRECTION_EAST, MapObject::DIRECTION_NORTH]
+
+void reset();
+Reset the initial PV, inertia, speed and shield of the object.
+
+bool isAlive();
+Check if the object has PV left.
+
+void attack(Ship $other, Weapon $weapon)
+Attack another ship with a given weapon.
+
+void addWeapon(Weapon $weapon);
+Add a weapon to the object.
+
+void improveShield($pp);
+Improve the shield.
+
+void improveSpeed($pp);
+Improve the speed.
+
+void improveInertia($pp);
+Improve the inertia (reduce it).
+
+void improvePv($pp);
+Improve life points.
+
+string toJson();
+Get a JSON representation of the object.

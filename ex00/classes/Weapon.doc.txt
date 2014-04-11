@@ -1,0 +1,6 @@
+The Weapon class is the base for every weapon available on
+MapObjects.
+
+Methods:
+
+void improvePower($pp);
