@@ -30,12 +30,21 @@
 
 	function drawObjects(objects)
 	{
-		objects.forEach(function(el, i) {
+		console.dir('fwgew');
+		objects.forEach(function(el, i)
+		{
 			if (el.alive) {
 				var img = new Image(el.w * factor.x, el.h * factor.y);
-				img.src = el.sprite;
-				img.onload = function() {
-					ctx.drawImage(img, el.x * factor.x, el.y * factor.y, el.w * factor.x, el.h * factor.y);
+				img.src = el.sprite.replace('{{dir}}', el.direction);
+				img.onload = function()
+				{
+
+					console.dir(el);
+					ctx.save();
+					ctx.moveTo(el.x * factor.x, el.y * factor.y);
+					//ctx.rotate(-el.direction * 90 * Math.PI / 180);
+					ctx.drawImage(img, 0, 0, el.w * factor.x, el.h * factor.y);
+					ctx.restore();
 				}
 			}
 		});
@@ -58,15 +67,6 @@
 			ctx.clearRect(0, 0, canvas.height, canvas.width);
 			drawGrid(150, 100);
 			drawObjects(objects);
-			objects.forEach(function(el, i) {
-				if (el.alive) {
-					var img = new Image(el.w * factor.x, el.h * factor.y);
-					img.src = el.sprite;
-					img.onload = function() {
-						ctx.drawImage(img, el.x * factor.x, el.y * factor.y, el.w * factor.x, el.h * factor.y);
-					}
-				}
-			});
 			$scope.objects = objects;
 		});
 	});

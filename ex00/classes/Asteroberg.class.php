@@ -12,7 +12,7 @@ class Asteroberg extends Block
 		$h = self::H;
 		$pp = 0;
 		$pv = 9999;
-		$sprite = "/ex00/img/Asteroberg.png";
+		$sprite = "/ex00/img/Asteroberg_{{dir}}.png";
 		parent::__construct($x, $y, $h, $w, $pv, $name, $sprite, $player);
 	}
 }

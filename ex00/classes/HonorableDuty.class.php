@@ -15,7 +15,7 @@ class HonorableDuty extends Ship
 		$speed = 15;
 		$inertia = 4;
 		$shield = 0;
-		$sprite = "/ex00/img/HonorableDuty.png";
+		$sprite = "/ex00/img/HonorableDuty_{{dir}}.png";
 		$weapon = array();
 		parent::__construct($x, $y, $h, $w, $pv, $name, $sprite, $player, $speed, $inertia, $shield, $weapon);
 	}

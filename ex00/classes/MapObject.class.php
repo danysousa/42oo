@@ -2,10 +2,10 @@
 
 abstract class MapObject extends Base
 {
-	const DIRECTION_WEST  = 1;
+	const DIRECTION_WEST  = 0;
+	const DIRECTION_SOUTH = 1;
 	const DIRECTION_EAST  = 2;
 	const DIRECTION_NORTH = 3;
-	const DIRECTION_SOUTH = 4;
 
 	protected $x;
 	protected $y;
@@ -25,6 +25,8 @@ abstract class MapObject extends Base
 	protected $initialSpeed;
 	protected $initialInertia;
 	protected $initialShield;
+
+	protected $direction;
 
 	public function __construct($x, $y, $h, $w, $pv, $name, $sprite, Player $player, $speed = 0, $inertia = 0, $shield = 0, array $weapons = array())
 	{
@@ -46,7 +48,7 @@ abstract class MapObject extends Base
 		$this->setInitialInertia($inertia);
 		$this->setInitialShield($shield);
 
-		$this->direction = rand(self::DIRECTION_WEST, self::DIRECTION_SOUTH);
+		$this->direction = rand(0, 3);
 	}
 
 	public function reset()

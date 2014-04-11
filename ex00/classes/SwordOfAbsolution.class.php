@@ -15,7 +15,7 @@ class SwordOfAbsolution extends Ship
 		$speed = 18;
 		$inertia = 3;
 		$shield = 0;
-		$sprite = "/ex00/img/SwordOfAbsolution.png";
+		$sprite = "/ex00/img/SwordOfAbsolution_{{dir}}.png";
 		$weapon = array();
 		parent::__construct($x, $y, $h, $w, $pv, $name, $sprite, $player, $speed, $inertia, $shield, $weapon);
 	}
