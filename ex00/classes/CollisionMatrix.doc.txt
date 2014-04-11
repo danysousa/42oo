@@ -1,0 +1,18 @@
+The CollisionMatrix class helps check if there are any collisions
+between MapObjects in the game world.
+
+An instance can be constructed like this:
+
+$numRows = 100;
+$numCols = 150;
+$matrix = new CollisionMatrix($numRows, $numCols);
+
+The CollisionMatrix class provides the following methods:
+
+void addObject(MapObject $o);
+Adds a MapObject to the matrix.
+
+bool collision(MapObject $o);
+Checks if the addition of the MapObject $o would create a collision on the
+matrix, depending on the objects that have previously been added with
+`addObject(MapObject $o)`.

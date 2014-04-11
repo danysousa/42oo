@@ -1,0 +1,2 @@
+The Block class represents a MapObject that serves as an obstacle
+to ships and other Blocks.
