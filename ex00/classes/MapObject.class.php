@@ -15,25 +15,44 @@ abstract class MapObject extends Base
 	protected $player;
 	protected $name;
 
+	// save initial values so we can reset everything on the next turn
+	protected $initialPv;
+	protected $initialSpeed;
+	protected $initialInertia;
+	protected $initialShield;
+
 	public function __construct($x, $y, $h, $w, $pv, $name, $sprite, Player $player, $speed = 0, $inertia = 0, $shield = 0, array $weapons = array())
 	{
 		$this->setX($x);
 		$this->setY($y);
 		$this->setH($h);
 		$this->setW($w);
-		$this->setPv($pv);
 		$this->setSprite($sprite);
 		$this->setPlayer($player);
+		$this->setPv($pv);
 		$this->setSpeed($speed);
 		$this->setInertia($inertia);
 		$this->setShield($shield);
 		$this->setWeapons($weapons);
 		$this->setName($name);
+
+		$this->setInitialPv($pv);
+		$this->setInitialSpeed($speed);
+		$this->setInitialInertia($inertia);
+		$this->setInitialShield($shield);
 	}
 
-	public function alive()
+	public function reset()
 	{
-		return $this->pv <= 0;
+		$this->setPv($this->getInitialPv());
+		$this->setSpeed($this->getInitialSpeed());
+		$this->setInertia($this->getInitialInertia());
+		$this->setShield($this->getInitialShield());
+	}
+
+	public function isAlive()
+	{
+		return $this->pv > 0;
 	}
 
 	public function attack(Ship $other, Weapon $weapon)
@@ -76,5 +95,17 @@ abstract class MapObject extends Base
 	public function improvePv($pp)
 	{
 		$this->speed += $pp;
+	}
+
+	public function toJson()
+	{
+		return array(
+			'sprite' => $this->getSprite(),
+			'x' => $this->getX(),
+			'y' => $this->getY(),
+			'w' => $this->getW(),
+			'h' => $this->getH(),
+			'alive' => $this->isAlive()
+		);
 	}
 }

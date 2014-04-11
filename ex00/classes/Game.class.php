@@ -66,4 +66,14 @@ class Game extends Base
 	{
 		return unserialize(file_get_contents(__DIR__ . self::FILE));
 	}
+
+	public function toJson()
+	{
+		$objects = array();
+		foreach ($this->getShips() as $s)
+			$objects[] = $s->toJson();
+		foreach ($this->getBlocks() as $b)
+			$objects[] = $b->toJson();
+		return $objects;
+	}
 }
