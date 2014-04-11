@@ -38,10 +38,14 @@ if (get('action') === 'addPlayer')
 		$name = get('name');
 		$player = new Player($name, Player::ACTIVE, session_id());
 		$ship = get('ship');
-		$x = rand(0, 149 - $ship::W);
-		$y = rand(0, 99 - $ship::H);
-		$game->addShip(new $ship($x, $y, $player));
+		$ship = new $ship(0, 0, $player);
 		$game->addPlayer($player);
+		while ($game->getCollisionMatrix()->collision($ship))
+		{
+			$ship->setX(rand(0, 149 - $ship::W));
+			$ship->setY(rand(0, 99 - $ship::H));
+		}
+		$game->addShip($ship);
 		$game->save();
 		json(true);
 		die();
