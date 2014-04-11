@@ -2,6 +2,8 @@
 
 session_start();
 
+define('GAME_MAX_NUM_SHIPS', 4);
+
 spl_autoload_register(function($class)
 {
 	require_once __DIR__ . '/classes/' . $class . '.class.php';
@@ -15,7 +17,7 @@ else
 {
 	$game = new Game();
 	$game->addPlayer($neutralPlayer = new Player("Switzerland", Player::INACTIVE, null));
-	$game->addBlock(new Asteroberg(30, 30, $neutralPlayer));
+	$game->addBlock(new Asteroberg(rand(0, 149 - Asteroberg::W), rand(0, 99 - Asteroberg::H), $neutralPlayer));
 	// add ships etc...
 }
 
@@ -33,6 +35,11 @@ function json($obj)
 
 if (get('action') === 'addPlayer')
 {
+	if (count($game->getShips()) >= GAME_MAX_NUM_SHIPS)
+	{
+		json(false);
+		die();
+	}
 	if (get('name') !== false && get('ship') !== false)
 	{
 		$name = get('name');
@@ -72,6 +79,7 @@ else if (get('action') === 'objects')
 else if (get('action') === 'board')
 {
 	include 'templates/game.php';
+	$game->save();
 	die();
 }
 else if (get('action') === 'playTurn')
