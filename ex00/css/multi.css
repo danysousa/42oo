@@ -33,6 +33,49 @@ form
 	height: 400px;
 }
 
+/*
+ * Form input placeholders, same style as input text
+ */
+::-webkit-input-placeholder
+{
+	background-color: black;
+	border: none;
+	outline: none;
+	font-size: 20px;
+	text-align: center;
+	color: #52AEF3;
+}
+
+:-moz-placeholder
+{
+	background-color: black;
+	border: none;
+	outline: none;
+	font-size: 20px;
+	text-align: center;
+	color: #52AEF3;
+}
+
+::-moz-placeholder
+{
+	background-color: black;
+	border: none;
+	outline: none;
+	font-size: 20px;
+	text-align: center;
+	color: #52AEF3;
+}
+
+:-ms-input-placeholder
+{
+	background-color: black;
+	border: none;
+	outline: none;
+	font-size: 20px;
+	text-align: center;
+	color: #52AEF3;
+}
+
 form input
 {
 	background-color: black;

@@ -4,9 +4,16 @@ class App {
 	protected $instances = array();
 
 	public function __construct() {
+		// activate error display
 		ini_set('display_errors', 1);
 		error_reporting(E_ALL);
+		// handle all errors
+		set_error_handler(function($errno, $errstr) {
+			throw new Exception($errstr);
+		}, E_ALL);
+		// load config file
 		require_once __DIR__ . '/config.php';
+		// autoload all classes
 		spl_autoload_register(function($class) {
 			require_once __DIR__ . '/classes/' . $class . '.class.php';
 		});
@@ -35,17 +42,31 @@ function app() {
  * Setup controllers.
  *
  * Each controller is a closure returned from a controller file.
-*/
+ * A controller can access the Application (and all instances like db, session)
+ * through the function `app()`.
+ */
 $actions = array(
 	'addPlayer' => require __DIR__ . '/controllers/addPlayer.php',
 	'createGame' => require_once __DIR__ . '/controllers/createGame.php',
 	'login' => require __DIR__ . '/controllers/login.php',
 	'home' => require_once __DIR__ . '/controllers/home.php',
 	'profile' => require_once __DIR__.'/controllers/profile.php'
+	// the page that allows to create a game or join a game
+	'createGame' => require __DIR__ . '/controllers/createGame.php',
+	// the script that saves a created game
+	'postCreateGame' => require __DIR__ . '/controllers/postCreateGame.php',
+	// the script that saves when a player joins a game
+	'postJoinGame' => require __DIR__ . '/controllers/postJoinGame.php',
 );
 
+// check if an action applies for this request and execute it
 if (isset($_GET['action']) && isset($actions[$_GET['action']])) {
-	$actions[$_GET['action']]();
+	try {
+		$actions[$_GET['action']]();
+	} catch (Exception $e) {
+		echo 'error';
+	}
+// or return a 404
 } else {
 	echo '404';
 }
