@@ -23,6 +23,6 @@ return function() {
 	}
 
 	app()->get('db')->query("UPDATE user SET id_partie = ? WHERE id = ?", [$id['id'], $user['id']]);
-
+	
 	echo 'Successfully joined the game!';
 };

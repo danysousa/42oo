@@ -29,7 +29,7 @@
 						<a href="index.php?action=profile" title="profile"><span class="menu_block_typo">[PROFILE]<img class="img_block" src="http://img1.wikia.nocookie.net/__cb20111205015944/warhammer40k/images/a/ad/Calixis-logo.png"></span></a>
 					</div>
 					<div class="menu_block">
-						<span class="menu_block_typo">[LOBBY]<img class="img_block" src="http://2.bp.blogspot.com/-wn8YsUC-o1I/TQrHQO3QPwI/AAAAAAAAANo/ElW0ZOLE2FY/s320/blood+angels+warhammer.png"></span>
+						<a href="index.php?action=lobby" title="multi"><span class="menu_block_typo">[LOBBY]<img class="img_block" src="http://2.bp.blogspot.com/-wn8YsUC-o1I/TQrHQO3QPwI/AAAAAAAAANo/ElW0ZOLE2FY/s320/blood+angels+warhammer.png"></span></a>
 					</div>
 				</div>
 			</div>

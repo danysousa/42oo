@@ -1,3 +1,43 @@
+::-webkit-input-placeholder
+{
+	background-color: black;
+	border: none;
+	outline: none;
+	font-size: 20px;
+	text-align: center;
+	color: #52AEF3;
+}
+
+:-moz-placeholder
+{
+	background-color: black;
+	border: none;
+	outline: none;
+	font-size: 20px;
+	text-align: center;
+	color: #52AEF3;
+}
+
+::-moz-placeholder
+{
+	background-color: black;
+	border: none;
+	outline: none;
+	font-size: 20px;
+	text-align: center;
+	color: #52AEF3;
+}
+
+:-ms-input-placeholder
+{
+	background-color: black;
+	border: none;
+	outline: none;
+	font-size: 20px;
+	text-align: center;
+	color: #52AEF3;
+}
+
 body
 {
 	background-repeat: no-repeat;

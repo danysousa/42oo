@@ -23,9 +23,9 @@
 						<span class="login_block_typo">[LOGIN]</span>
 						<div class="form_block">
 							<form id="login" method="POST" action="./index.php?action=login">
-								<input type="text" name="login_login" value="[LOGIN]"><br />
-								<input type="password" name="login_password" value="[PASSWORD]"><br />
-								<input type="submit" name="login_submit" value="FIGHT">
+								<input type="text" name="login_login" placeholder="[LOGIN]"><br />
+								<input type="password" name="login_password" placeholder="[PASSWORD]"><br />
+								<input type="submit" name="login_submit" placeholder="FIGHT">
 							</form>
 						</div>
 					</div>
@@ -33,9 +33,9 @@
 						<span class="login_block_typo">[REGISTER]</span>
 						<div class="form_block">
 							<form id="register" method="POST" action="./index.php?action=login">
-								<input type="text" name="register_login" value="[REGISTER_LOGIN]"><br />
-								<input type="password" name="register_password" value="[PASSWORD]"><br />
-								<input type="submit" name="register_submit" value="FIGHT">
+								<input type="text" name="register_login" placeholder="[REGISTER_LOGIN]"><br />
+								<input type="password" name="register_password" placeholder="[PASSWORD]"><br />
+								<input type="submit" name="register_submit" placeholder="FIGHT">
 							</form>
 						</div>
 					</div>
