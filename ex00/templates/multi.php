@@ -22,8 +22,8 @@
 					<div class="login_block">
 						<span class="login_block_typo">[CREATE:GAME]</span>
 						<div class="form_block">
-							<form id="login" method="POST">
-								<input type="text" name="create_game_name" value="[GAME:NAME]"><br />
+							<form id="login" method="POST" action="index.php?action=postCreateGame">
+								<input type="text" name="create_game_name" placeholder="[GAME:NAME]"><br />
 								<input type="submit" name="create_game_submit" value="FIGHT">
 							</form>
 						</div>
@@ -31,8 +31,8 @@
 					<div class="login_block">
 						<span class="login_block_typo">[JOIN:GAME]</span>
 						<div class="form_block">
-							<form id="register" method="POST">
-								<input type="text" name="join_game_login" value="[GAME:NAME]"><br />
+							<form id="register" method="POST" action="index.php?action=postJoinGame">
+								<input type="text" name="join_game_login" placeholder="[GAME:NAME]"><br />
 								<input type="submit" name="join_game_submit" value="FIGHT">
 							</form>
 						</div>
