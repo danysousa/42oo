@@ -22,7 +22,7 @@
 					<div class="login_block">
 						<span class="login_block_typo">[LOGIN]</span>
 						<div class="form_block">
-							<form id="login" method="POST">
+							<form id="login" method="POST" action="/index.php?action=register">
 								<input type="text" name="login_login" value="[LOGIN]"><br />
 								<input type="password" name="login_password" value="[PASSWORD]"><br />
 								<input type="submit" name="login_submit" value="FIGHT">
@@ -32,7 +32,7 @@
 					<div class="login_block">
 						<span class="login_block_typo">[REGISTER]</span>
 						<div class="form_block">
-							<form id="register" method="POST">
+							<form id="register" method="POST" action="/index.php?action=register">
 								<input type="text" name="register_login" value="[REGISTER_LOGIN]"><br />
 								<input type="password" name="register_password" value="[PASSWORD]"><br />
 								<input type="submit" name="register_submit" value="FIGHT">
@@ -44,4 +44,4 @@
 			</div>
 		</center>
 	</BODY>
-</HTML> 
+</HTML>

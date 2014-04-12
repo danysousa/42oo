@@ -29,11 +29,13 @@ function app() {
 }
 
 $actions = array(
-	'addPlayer' => require __DIR__ . '/controllers/addPlayer.php'
+	'addPlayer' => require __DIR__ . '/controllers/addPlayer.php',
+	'login' => require __DIR__ . '/controllers/login.php',
+	'login' => require __DIR__ . '/controllers/register.php',
 );
 
-if (isset($_GET['action']) && isset($action[$_GET['action']])) {
-	$action[$_GET['action']]();
+if (isset($_GET['action']) && isset($actions[$_GET['action']])) {
+	$actions[$_GET['action']]();
 } else {
 	echo '404';
 }
@@ -96,7 +98,7 @@ else if(get('action') === 'move' && (int)get('id'))
 {
 	//move ships with $game->getShips()[get('id')]->set[X/Y]();
 	if ((int)get('x') && ((int)get('x') === -1 || (int)get('x') === 1))
-		$game->getShips()[(int)get('id')]->setX($game->getShips()[get('id')]->getX() + ((int)get('x') * $game->getShips()[get('id')]->getSpeed()));	
+		$game->getShips()[(int)get('id')]->setX($game->getShips()[get('id')]->getX() + ((int)get('x') * $game->getShips()[get('id')]->getSpeed()));
 	else if((int)get('y') && ((int)get('y') === -1 || (int)get('y') === 1))
 		$game->getShips()[(int)get('id')]->setY($game->getShips()[get('id')]->getY() + ((int)get('y') * $game->getShips()[get('id')]->getSpeed()));
 	json(true);
