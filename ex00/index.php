@@ -50,7 +50,7 @@ $actions = array(
 	'createGame' => require_once __DIR__ . '/controllers/createGame.php',
 	'login' => require __DIR__ . '/controllers/login.php',
 	'home' => require_once __DIR__ . '/controllers/home.php',
-	'profile' => require_once __DIR__.'/controllers/profile.php'
+	'profile' => require_once __DIR__.'/controllers/profile.php',
 	// the page that allows to create a game or join a game
 	'createGame' => require __DIR__ . '/controllers/createGame.php',
 	// the script that saves a created game
