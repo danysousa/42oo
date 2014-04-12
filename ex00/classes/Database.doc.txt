@@ -1,0 +1,16 @@
+The Database class allows maintaining a database connection (Mysql)
+and querying it safely (SQL injection handled by the class).
+
+An instance can be created like this:
+new Database('localhost', 'user', 'password', 'dnname');
+
+The constructor will throw an exception if the connection fails.
+
+Instance methods:
+
+array query($sql, array $params = array());
+Executes the $sql query and returns an array of results or null if
+there are no results.
+
+array queryOne($sql, array $params = array());
+Same as `query` but returns the first result or null if not available.

@@ -21,11 +21,11 @@ class App {
 	}
 }
 
+$GLOBALS['app'] = $app = new App();
+
 $app->set('session', new Session());
 $app->set('db', new Database('localhost', DB_USER, DB_PASSWORD, DB_NAME));
 $app->set('view', new View(__DIR__ . '/templates'));
-
-$GLOBALS['app'] = $app = new App();
 
 function app() {
 	return $GLOBALS['app'];

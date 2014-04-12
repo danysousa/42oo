@@ -1,0 +1,15 @@
+The Session class handles user sessions.
+
+An instance is constructed like this:
+new Session();
+
+Instance methods:
+
+void flush();
+Flushes all session data.
+
+void set($key, $value);
+Sets a value in the session.
+
+mixed get($key);
+Returns a value from the session.
