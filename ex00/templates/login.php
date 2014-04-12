@@ -32,7 +32,7 @@
 					<div class="login_block">
 						<span class="login_block_typo">[REGISTER]</span>
 						<div class="form_block">
-							<form id="register" method="POST" action="/index.php?action=register">
+							<form id="register" method="POST" action="./index.php?action=login">
 								<input type="text" name="register_login" value="[REGISTER_LOGIN]"><br />
 								<input type="password" name="register_password" value="[PASSWORD]"><br />
 								<input type="submit" name="register_submit" value="FIGHT">
