@@ -4,7 +4,7 @@ class HonorableDuty extends Ship
 {
 	const W = 10;
 	const H = 15;
-	
+
 	public function __construct($x, $y, Player $player)
 	{
 		$name = "Honorable Duty";
