@@ -45,6 +45,7 @@ function app() {
  * A controller can access the Application (and all instances like db, session)
  * through the function `app()`.
  */
+
 $actions = array(
 	'addPlayer' => require __DIR__ . '/controllers/addPlayer.php',
 	'createGame' => require_once __DIR__ . '/controllers/createGame.php',

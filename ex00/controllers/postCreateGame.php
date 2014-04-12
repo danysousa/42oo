@@ -25,6 +25,14 @@ return function() {
 		4, // max players
 		$gameName
 	]);
+	$id_partie = app()->get('db')->query("SELECT id FROM partie WHERE name LIKE ?", array(
+		$gameName
+	));
+	app()->get('db')->query("UPDATE user SET id_partie = ? WHERE id LIKE ?", array(
+		$id_partie[0]['id'],
+		app()->get('session')->get('id_usr')
+	));
+
 
 	echo 'Successfully created the game!';
 };
