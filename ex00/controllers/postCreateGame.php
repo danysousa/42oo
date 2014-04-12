@@ -33,6 +33,5 @@ return function() {
 		app()->get('session')->get('id_usr')
 	));
 
-
 	echo 'Successfully created the game!';
 };
