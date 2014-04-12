@@ -37,6 +37,8 @@ function app() {
  * Each controller is a closure returned from a controller file.
  */
 $actions = array(
+	'addPlayer' => require __DIR__ . '/controllers/addPlayer.php',
+	'login' => require __DIR__ . '/controllers/login.php',
 	'createGame' => require_once __DIR__ . '/controllers/createGame.php'
 );
 
@@ -104,7 +106,7 @@ else if(get('action') === 'move' && (int)get('id'))
 {
 	//move ships with $game->getShips()[get('id')]->set[X/Y]();
 	if ((int)get('x') && ((int)get('x') === -1 || (int)get('x') === 1))
-		$game->getShips()[(int)get('id')]->setX($game->getShips()[get('id')]->getX() + ((int)get('x') * $game->getShips()[get('id')]->getSpeed()));	
+		$game->getShips()[(int)get('id')]->setX($game->getShips()[get('id')]->getX() + ((int)get('x') * $game->getShips()[get('id')]->getSpeed()));
 	else if((int)get('y') && ((int)get('y') === -1 || (int)get('y') === 1))
 		$game->getShips()[(int)get('id')]->setY($game->getShips()[get('id')]->getY() + ((int)get('y') * $game->getShips()[get('id')]->getSpeed()));
 	json(true);
