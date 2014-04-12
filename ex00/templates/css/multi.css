@@ -1,0 +1,162 @@
+body
+{
+	background-repeat: no-repeat;
+	background-position: center;
+	background-image: url('http://wallpaperskd.com/wp-content/uploads/2012/02/scifi-spaceship-anime-art.jpg');
+	background-color: #060606;
+	margin: 0px;
+	padding: 0px;
+}
+
+a
+{
+	text-decoration: none;
+}
+
+p
+{
+	margin: 0px;
+	padding: 0px;
+}
+
+hr
+{
+	position: relative;
+	top: 150px;
+	color: #52AEF3;
+	outline-color: white;
+}
+
+form
+{
+	width: 400px;
+	height: 400px;
+}
+
+form input
+{
+	background-color: black;
+	border: none;
+	outline: none;
+	font-size: 20px;
+	text-align: center;
+	color: #52AEF3;
+}
+
+form input:hover
+{
+	background-color: black;
+	border-right: 1px #52AEF3 solid;
+	border-left: 1px #52AEF3 solid;
+	outline: none;
+	font-size: 20px;
+	text-align: center;
+	color: #52AEF3;
+}
+
+.float_img
+{
+	position: absolute;
+	top: 835px;
+	right: 20px;
+	left: 1400px;
+
+}
+
+#global
+{
+	width: 1600px;
+	height: 1440px;
+	background-color: black;
+	background-position: center;
+	background-repeat: no-repeat;
+	border-right: 5px #0C1A29 dashed;
+	border-left: 5px #0C1A29 dashed;
+	box-shadow: 0px 0px 120px #0C1A29;
+}
+
+#global_block
+{
+	position: relative;
+	top: 200px;
+	width: 850px;
+	height: 360px;
+	border-top: 5px #0C1A29 solid;
+	border-bottom: 5px #0C1A29 solid;
+	box-shadow: 0px 0px 120px #111111;
+}
+
+#log_bar
+{
+	background-color: #080808;
+	height: 32px;
+}
+
+.header_cell a
+{
+	color:white;
+	text-decoration: none;
+	font-size: 22px;
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
+.header_cell:hover a
+{
+	color:white;
+	text-decoration: underline;
+	background-color: #121212;
+	font-size: 22px;
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
+#header_title
+{
+	position: relative;
+	top: 80px;
+	color: #52AEF3;
+	font-size: 80px;
+	font-weight: normal;
+	font-family: monospace;
+}
+
+.login_block
+{
+	display: inline-block;
+	position: relative;
+	top: 20px;
+	width: 400px;
+	height: 300px;
+	background-color: #080808;
+	border: 10px black solid;
+	background-image: url('img/Body_Pattern.png');
+}
+
+.login_block_typo
+{
+	position: relative;
+	top: 40px;
+	color: #52AEF3;
+	font-size: 32px;
+	font-weight: normal;
+	font-family: monospace;
+}
+
+.login_block:hover .login_block_typo
+{
+	position: relative;
+	top: 40px;
+	color: #89D8FC;
+	font-size: 32px;
+	font-weight: normal;
+	font-family: monospace;
+}
+
+.form_block
+{
+	position: relative;
+	top: 100px;
+	width: 400px;
+	height: 400px;
+}
