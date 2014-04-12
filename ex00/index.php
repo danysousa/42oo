@@ -24,7 +24,7 @@ class App {
 $GLOBALS['app'] = $app = new App();
 
 $app->set('session', new Session());
-$app->set('db', new Database('localhost', DB_USER, DB_PASSWORD, DB_NAME));
+$app->set('db', new Database('localhost', $GLOBALS['DB_USER'], $GLOBALS['DB_PASSWORD'], $GLOBALS['DB_NAME']));
 $app->set('view', new View(__DIR__ . '/templates'));
 
 function app() {
