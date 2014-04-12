@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost:3306
--- Generation Time: Apr 12, 2014 at 07:41 AM
+-- Generation Time: Apr 12, 2014 at 08:12 AM
 -- Server version: 5.5.36
 -- PHP Version: 5.4.26
 
@@ -63,7 +63,8 @@ CREATE TABLE IF NOT EXISTS `user` (
   `id_partie` int(11) NOT NULL,
   `score` int(11) NOT NULL,
   `defaite` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
