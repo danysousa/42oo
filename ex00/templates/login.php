@@ -11,13 +11,13 @@
 				<div id="log_bar">
 					<table border="0">
 						<tr>
-							<td class="header_cell"><a href="login.php" title="">LOGIN</a></td>
-							<td class="header_cell"><a href="login.php" title="">REGISTER</a></td>
+							<td class="header_cell"><a href="index.php?action=login" title="">LOGIN</a></td>
+							<td class="header_cell"><a href="index.php?action=login" title="">REGISTER</a></td>
 							<td class="header_cell"><a href="" title="">ABOUT</a></td>
 						</tr>
 					</table>
 				</div>
-				<a href="index.php" title="Home"><span id="header_title">[LOGIN:PAGE]</span></a>
+				<a href="index.php?action=home" title="Home"><span id="header_title">[LOGIN:PAGE]</span></a>
 				<div id="global_block">
 					<div class="login_block">
 						<span class="login_block_typo">[LOGIN]</span>
