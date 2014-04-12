@@ -13,6 +13,8 @@ return function() {
 		{
 			app()->get('db')->query("INSERT INTO user (name, pwd) VALUES(?, ?)", array($_POST['register_login'], $pwd));
 			app()->get('session')->set('login', $_POST['register_login']);
+			$id = app()->get('db')->query("SELECT id FROM user WHERE name LIKE ?", array($_POST['register_login']));
+			app()->get('session')->set('id_usr', $id);
 		}
 	}
 	if (!app()->get('session')->get('login'))
