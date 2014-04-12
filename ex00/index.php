@@ -39,7 +39,6 @@ function app() {
 $actions = array(
 	'addPlayer' => require __DIR__ . '/controllers/addPlayer.php',
 	'login' => require __DIR__ . '/controllers/login.php',
-	'login' => require __DIR__ . '/controllers/register.php',
 	'createGame' => require_once __DIR__ . '/controllers/createGame.php'
 );
 
