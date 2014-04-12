@@ -24,6 +24,8 @@
 						<div class="form_block">
 							<form id="login" method="POST" action="index.php?action=postCreateGame">
 								<input type="text" name="create_game_name" placeholder="[GAME:NAME]"><br />
+								<input type="text" name="create_max_players" placeholder="[MAX:PLAYERS]"><br />
+								<input type="text" name="create_ship_points" placeholder="[SHIP:POINTS]"><br />
 								<input type="submit" name="create_game_submit" value="FIGHT">
 							</form>
 						</div>

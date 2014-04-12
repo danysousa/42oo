@@ -27,55 +27,6 @@ hr
 	outline-color: white;
 }
 
-form
-{
-	width: 400px;
-	height: 400px;
-}
-
-/*
- * Form input placeholders, same style as input text
- */
-::-webkit-input-placeholder
-{
-	background-color: black;
-	border: none;
-	outline: none;
-	font-size: 20px;
-	text-align: center;
-	color: #52AEF3;
-}
-
-:-moz-placeholder
-{
-	background-color: black;
-	border: none;
-	outline: none;
-	font-size: 20px;
-	text-align: center;
-	color: #52AEF3;
-}
-
-::-moz-placeholder
-{
-	background-color: black;
-	border: none;
-	outline: none;
-	font-size: 20px;
-	text-align: center;
-	color: #52AEF3;
-}
-
-:-ms-input-placeholder
-{
-	background-color: black;
-	border: none;
-	outline: none;
-	font-size: 20px;
-	text-align: center;
-	color: #52AEF3;
-}
-
 form input
 {
 	background-color: black;
@@ -122,8 +73,8 @@ form input:hover
 {
 	position: relative;
 	top: 200px;
-	width: 850px;
-	height: 360px;
+	width: 1000px;
+	height: 860px;
 	border-top: 5px #0C1A29 solid;
 	border-bottom: 5px #0C1A29 solid;
 	box-shadow: 0px 0px 120px #111111;
@@ -164,19 +115,93 @@ form input:hover
 	font-family: monospace;
 }
 
-.login_block
+.menu_block
 {
-	float: left;
+	display: inline-block;
 	position: relative;
 	top: 20px;
-	width: 400px;
-	height: 300px;
+	width: 950px;
+	height: 800px;
 	background-color: #080808;
-	border: 10px black solid;
+	border: 5px black solid;
 	background-image: url('img/Body_Pattern.png');
 }
 
-.login_block_typo
+.menu_block_typo
+{
+	position: relative;
+	top: 50px;
+	color: #F2F2F2;
+	font-size: 45px;
+	font-weight: normal;
+	font-family: monospace;
+	text-align: center;
+}
+
+.img_block
+{
+	position: relative;
+	margin-top: 20px;
+	width: 225px;
+	height: 200px;
+}
+
+#score_table
+{
+	margin-top: 120px;
+	height: 300px;
+	text-align: center;
+}
+
+#score_table td
+{
+	text-align: left;
+	margin-top: 20px;
+	display: block;
+	float: left;
+	position: relative;
+	width: 400px;
+	top: 20px;
+	right: 20px;
+	color: white;
+	font-size: 24px;
+	border-bottom: 2px cyan solid; 
+	background-color: #080808;
+	background-image: url('img/Body_Pattern.png');	
+}
+
+#badge
+{
+	position: relative;
+	left: 20px;
+	width: 600px;
+	height: 200px;
+}
+
+#level
+{
+	font-size: 32px;
+	color: white;
+	font-family: monospace;
+}
+
+#profile_img
+{
+	position: relative;
+	top: 350px;
+	width: 250px;
+	height: 250px;
+}
+
+#lobby_block
+{
+	position: relative;
+	width: 900px;
+	height: 800px;
+	border: 1px white solid;
+}
+
+.lobby_block_typo
 {
 	position: relative;
 	top: 40px;
@@ -186,7 +211,7 @@ form input:hover
 	font-family: monospace;
 }
 
-.login_block:hover .login_block_typo
+.lobby_block:hover .lobby_block_typo
 {
 	position: relative;
 	top: 40px;
@@ -196,10 +221,13 @@ form input:hover
 	font-family: monospace;
 }
 
-.form_block
+#chat_bar
 {
-	position: relative;
-	top: 100px;
-	width: 400px;
-	height: 400px;
+	width: 800px;
+	border-bottom: 1px #52AEF3 solid;
+}
+
+#chat_bar:hover
+{
+	border-bottom: none;
 }
