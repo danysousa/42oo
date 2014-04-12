@@ -37,13 +37,10 @@ function app() {
  * Each controller is a closure returned from a controller file.
  */
 $actions = array(
-<<<<<<< HEAD
 	'addPlayer' => require __DIR__ . '/controllers/addPlayer.php',
 	'login' => require __DIR__ . '/controllers/login.php',
 	'login' => require __DIR__ . '/controllers/register.php',
-=======
 	'createGame' => require_once __DIR__ . '/controllers/createGame.php'
->>>>>>> FETCH_HEAD
 );
 
 if (isset($_GET['action']) && isset($actions[$_GET['action']])) {
