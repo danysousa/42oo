@@ -23,7 +23,7 @@ class Database {
 
 	// execute a db query and return all results in an assoc array
 	public function query($sql, array $params = array()) {
-		if (($stmt = mysqli_prepare($this->_conn $sql)) === false)
+		if (($stmt = mysqli_prepare($this->_conn, $sql)) === false)
 			return null;
 		if (count($params) > 0) {
 			$types = '';
