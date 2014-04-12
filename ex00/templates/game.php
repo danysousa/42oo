@@ -7,13 +7,13 @@
 			<div ng-show="user && game">
 				<canvas id="myCanvas" width="2000" height="1300" style="border:1px solid #000000;"></canvas>
 				<h1>Hello {{ user.name }}</h1>
-				<h2>users currently in game</h2>
-				<ul ng-repeat="o in objects">
-					<li>{{ o.user.name }}</li>
+				<h2>Ships on map</h2>
+				<ul ng-repeat="s in game.ships">
+					<li>{{ s.ship_class }} [ {{s.ship_posX}}, {{s.ship_posY}}]</li>
 				</ul>
 				<h2>Choose the ship to use this turn</h2>
-				<select name="shipToUse" id="shipToUse" ng-model="chosenShip" ng-repeat="s in userShips">
-					<option value="{{ s.name }}">{{ s.name }}</option>
+				<select name="shipToUse" id="shipToUse" ng-model="chosenShip">
+					<option value="{{ s.ship_id }}" ng-repeat="s in game.ships | filter: { user_id: user.id }" ng-selected="$first">{{ s.ship_class }} [ {{s.ship_posX}}, {{s.ship_posY}}]</option>
 				</select>
 			</div>
 
