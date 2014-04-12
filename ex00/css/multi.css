@@ -171,9 +171,10 @@ form input:hover
 	top: 20px;
 	width: 400px;
 	height: 300px;
+	margin-left: 5px;
 	background-color: #080808;
 	border: 10px black solid;
-	background-image: url('img/Body_Pattern.png');
+	background-image: url('../img/Body_Pattern.png');
 }
 
 .login_block_typo

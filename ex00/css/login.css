@@ -170,7 +170,7 @@ form input:hover
 	height: 300px;
 	background-color: #080808;
 	border: 10px black solid;
-	background-image: url('img/Body_Pattern.png');
+	background-image: url('../img/Body_Pattern.png');
 }
 
 .login_block_typo

@@ -103,7 +103,7 @@ hr
 	height: 400px;
 	background-color: #080808;
 	border: 5px black solid;
-	background-image: url('img/Body_Pattern.png');
+	background-image: url('../img/Body_Pattern.png');
 }
 
 .menu_block:hover
@@ -135,7 +135,7 @@ hr
 	position: relative;
 	top: 50px;
 	color: #89D8FC;
-	font-size: 45px;
+	font-size: 45px;H]<
 	font-weight: normal;
 	font-family: monospace;
 }
