@@ -65,11 +65,14 @@ if (isset($_GET['action']) && isset($actions[$_GET['action']])) {
 	try {
 		$actions[$_GET['action']]();
 	} catch (Exception $e) {
-		echo 'error';
+		@file_put_contents(__DIR__ . '/error_log.txt', sprintf("Error: %s => %s\n", date('l jS \of F Y h:i:s A'), $e->getMessage()), FILE_APPEND);
+		http_response_code(500);
+		echo sprintf("An error occured. Check the log file.");
 	}
 // or return a 404
 } else {
-	echo '404';
+	http_response_code(404);
+	echo sprintf("404, not found.");
 }
 
 /*

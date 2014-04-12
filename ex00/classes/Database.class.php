@@ -23,8 +23,9 @@ class Database {
 
 	// execute a db query and return all results in an assoc array
 	public function query($sql, array $params = array()) {
-		if (($stmt = mysqli_prepare($this->_conn, $sql)) === false)
-			return null;
+		if (($stmt = mysqli_prepare($this->_conn, $sql)) === false) {
+			throw new Exception('Could not prepare query: ' . $sql);
+		}
 		if (count($params) > 0) {
 			$types = '';
 			foreach ($params as $p) {
@@ -33,13 +34,16 @@ class Database {
 			$refs = array();
 			foreach($params as $key => $value)
 				$refs[$key] = &$params[$key];
-			if (call_user_func_array('mysqli_stmt_bind_param', array_merge(array($stmt, $types), $refs)) === false)
-				return null;
+			if (call_user_func_array('mysqli_stmt_bind_param', array_merge(array($stmt, $types), $refs)) === false) {
+				throw new Exception('Could not bind param for query: ' . $sql);
+			}
 		}
-		if (mysqli_stmt_execute($stmt) === false)
+		if (mysqli_stmt_execute($stmt) === false) {
+			throw new Exception('Could not execute query: ' . $sql);
+		}
+		if (($result = mysqli_stmt_get_result($stmt)) === false) {
 			return null;
-		if (($result = mysqli_stmt_get_result($stmt)) === false)
-			return null;
+		}
 		return mysqli_fetch_all($result, MYSQLI_ASSOC);
 	}
 
