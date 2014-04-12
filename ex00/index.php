@@ -29,7 +29,8 @@ function app() {
 }
 
 $actions = array(
-	'addPlayer' => require __DIR__ . '/controllers/addPlayer.php'
+	'addPlayer' => require __DIR__ . '/controllers/addPlayer.php',
+	''
 );
 
 if (isset($_GET['action']) && isset($action[$_GET['action']])) {
