@@ -4,6 +4,8 @@ class App {
 	protected $instances = array();
 
 	public function __construct() {
+		ini_set('display_errors', 1);
+		error_reporting(E_ALL);
 		require_once __DIR__ . '/config.php';
 		spl_autoload_register(function($class) {
 			require_once __DIR__ . '/classes/' . $class . '.class.php';
@@ -19,22 +21,27 @@ class App {
 	}
 }
 
-$GLOBALS['app'] = $app = new App();
-
 $app->set('session', new Session());
 $app->set('db', new Database('localhost', DB_USER, DB_PASSWORD, DB_NAME));
+$app->set('view', new View(__DIR__ . '/templates'));
+
+$GLOBALS['app'] = $app = new App();
 
 function app() {
 	return $GLOBALS['app'];
 }
 
+/*
+ * Setup controllers.
+ *
+ * Each controller is a closure returned from a controller file.
+ */
 $actions = array(
-	'addPlayer' => require __DIR__ . '/controllers/addPlayer.php',
-	''
+	'createGame' => require_once __DIR__ . '/controllers/createGame.php'
 );
 
-if (isset($_GET['action']) && isset($action[$_GET['action']])) {
-	$action[$_GET['action']]();
+if (isset($_GET['action']) && isset($actions[$_GET['action']])) {
+	$actions[$_GET['action']]();
 } else {
 	echo '404';
 }
