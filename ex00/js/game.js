@@ -1,8 +1,4 @@
 (function() {
-	var KEY_DOWN	= 40;
-	var KEY_UP		= 38;
-	var KEY_LEFT	= 37;
-	var KEY_RIGHT	= 39;
 	var canvas = document.getElementById("myCanvas");
 	var ctx = canvas.getContext("2d");
 
@@ -54,8 +50,15 @@
 
 	var game = angular.module('gameApp', []);
  
-	game.controller('ActionFormCtrl', function ($scope, $http)
+	game.controller('ActionFormCtrl', function ($http, $scope)
 	{
+		$http.get('index.php?action=xhrUser').success(function(user) {
+			$http.get('index.php?action=xhrGame').success(function(game) {
+				$scope.user = user;
+				$scope.game = game;
+			});
+		});
+		/*
 		$http.get('/ex00/index.php?action=player').success(function(player)
 		{
 			$scope.player = player;
@@ -71,6 +74,7 @@
 			drawObjects(objects);
 			$scope.objects = objects;
 		});
+		*/
 
 		// document.addEventListener('keydown', function(event) 
 		// {

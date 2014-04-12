@@ -57,6 +57,14 @@ $actions = array(
 	'postCreateGame' => require __DIR__ . '/controllers/postCreateGame.php',
 	// the script that saves when a player joins a game
 	'postJoinGame' => require __DIR__ . '/controllers/postJoinGame.php',
+	// view the game board
+	'viewGameBoard' => require __DIR__ . '/controllers/viewGameBoard.php',
+
+	// XHR API for AngularJS
+	// get information about the currently logged in user
+	'xhrUser' => require __DIR__ . '/controllers/xhrUser.php',
+	// get the game associated with the currently logged in user
+	'xhrGame' => require __DIR__ . '/controllers/xhrGame.php',
 );
 
 // check if an action applies for this request and execute it
