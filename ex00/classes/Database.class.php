@@ -42,7 +42,7 @@ class Database {
 			throw new Exception('Could not execute query: ' . $sql);
 		}
 		if (($result = mysqli_stmt_get_result($stmt)) === false) {
-			throw new Exception('Could not get result for query: ' . $sql);
+			return null;
 		}
 		return mysqli_fetch_all($result, MYSQLI_ASSOC);
 	}
