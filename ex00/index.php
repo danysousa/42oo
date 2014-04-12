@@ -35,7 +35,7 @@ function app() {
  * Setup controllers.
  *
  * Each controller is a closure returned from a controller file.
- */
+*/
 $actions = array(
 	'addPlayer' => require __DIR__ . '/controllers/addPlayer.php',
 	'login' => require __DIR__ . '/controllers/login.php',
