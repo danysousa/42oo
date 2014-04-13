@@ -32,9 +32,9 @@
 
 	function getDirIndex(dir) {
 		var dirs = {
-			'west': 0,
+			'west': 2,
 			'south': 1,
-			'east': 2,
+			'east': 0,
 			'north': 3
 		};
 		return dirs[dir];
@@ -157,6 +157,7 @@
 				// if the ship hit another ship, lock it !
 				if (typeof data.x === 'undefined') {
 					alert('Your ship just died from a collision! :(');
+					window.location = window.location;
 					return;
 				}
 				$scope.selectedShip.ship_posX = data.x;
@@ -179,6 +180,7 @@
 					alert('Your ship was locked :(');
 					return;
 				}
+				window.location = window.location;
 			});
 		}
 
