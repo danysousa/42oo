@@ -36,14 +36,14 @@ return function() {
 				VALUES (?, ?, ?, ?, ?, 1, ?, ?, ?, ?)",
 				array(
 					$value,
-					0,
-					0,
+					0, // posX
+					0, // posY
 					$pv,
-					'courte',
-					0,
-					0,
-					0,
-					0
+					'courte', // range
+					0, // pp_shield
+					0, // pp_gun
+					0, // pp_speed
+					0 // pp_total
 				));
 			$id = app()->get('db')->queryOne("SELECT id FROM vaisseau ORDER BY id DESC LIMIT 1", array());
 			$partie = app()->get('db')->queryOne("SELECT id_partie FROM user WHERE id LIKE ?", array(

@@ -30,21 +30,34 @@
 		}
 	}
 
+	function getDirIndex(dir) {
+		var dirs = {
+			'west': 0,
+			'south': 1,
+			'east': 2,
+			'north': 3
+		};
+		return dirs[dir];
+	}
+
 	function drawObjects(objects)
 	{
 		objects.forEach(function(el, i)
 		{
-			if (el.alive) {
-				var img = new Image(el.w * factor.x, el.h * factor.y);
+			console.dir(el);
+			if (1) {
+				var img = new Image(el.ship_w * factor.x, el.ship_h * factor.y);
+				img.style.outline = '1px solid red';
 				// set the right sprite for the given object direction
-				img.src = el.sprite.replace('{{dir}}', el.direction);
+				img.src = el.ship_sprite.replace('{{dir}}', getDirIndex(el.ship_dir));
 				img.onload = function()
 				{
 					// west or east
 					if (el.direction % 2 === 0)
-						ctx.drawImage(img, el.x * factor.x, el.y * factor.y, el.h * factor.y, el.w * factor.x);
+						//             image,  posX,                 posY,                   width,                height
+						ctx.drawImage(img, el.ship_posX * factor.x, el.ship_posY * factor.y, el.ship_w * factor.y, el.ship_h * factor.x);
 					else
-						ctx.drawImage(img, el.x * factor.x, el.y * factor.y, el.w * factor.x, el.h * factor.y);
+						ctx.drawImage(img, el.ship_posX * factor.x, el.ship_posY * factor.y, el.ship_h * factor.x, el.ship_w * factor.y);
 				}
 			}
 		});
@@ -63,6 +76,8 @@
 			$http.get('index.php?action=xhrGame').success(function(game) {
 				$scope.user = user;
 				$scope.game = game;
+
+				drawObjects($scope.game.ships);
 			});
 		});
 
