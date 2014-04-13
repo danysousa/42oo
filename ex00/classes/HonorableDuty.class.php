@@ -2,8 +2,8 @@
 
 class HonorableDuty extends Ship
 {
-	const W = 11;
-	const H = 8;
+	const W = 8;
+	const H = 11;
 	const SPEED = 15;
 	const SPRITE = "/ex00/img/HonorableDuty_{{dir}}.png";
 

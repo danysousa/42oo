@@ -2,8 +2,8 @@ An SwordOfAbsolution is a Ship instance with preset values regarding
 the sprite, size, weapons, etc. These are the default values:
 
 name = "Sword Of Absolution"
-w = 10
-h = 8
+w = 7
+h = 11
 pp = 10;
 pv = 5
 speed = 15

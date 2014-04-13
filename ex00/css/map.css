@@ -148,6 +148,7 @@ fieldset
 	border-top: 5px #0C1A29 solid;
 	border-bottom: 5px #0C1A29 solid;
 	box-shadow: 0px 0px 120px #111111;
+	background: transparent;
 	background-repeat: no-repeat;
 	background-position: center;
 	background-image: url('');

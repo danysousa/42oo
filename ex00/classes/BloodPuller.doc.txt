@@ -2,8 +2,8 @@ An Blood Puller is a Ship instance with preset values regarding
 the sprite, size, weapons, etc. These are the default values:
 
 name = "Blood Puller"
-w = 13
-h = 8
+w = 8
+h = 13
 pp = 22;
 pv = 5
 speed = 10
