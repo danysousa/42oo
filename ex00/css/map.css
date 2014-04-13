@@ -213,6 +213,7 @@ fieldset
 
 #log_bar
 {
+	color: white;
 	background-color: #080808;
 	height: 32px;
 }
@@ -302,8 +303,10 @@ fieldset
 
 #stats_bar
 {
+	float: left;
+	margin-top: 50px;
+	background: transparent;
 	position: relative;
-	background-color: #080808;
 	height: 32px;
 	top: 200px;
 	bottom: 1px;

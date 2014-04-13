@@ -19,17 +19,17 @@
 
 				<div ng-app="gameApp" id="global_block">
 					<div ng-controller="ActionFormCtrl">
-						<div id="stats_bar" ng-show="selectedShip">
-							<table border="0">
-								<tr>
-									<td class="stats_cell">LIFEPOINTS[{{selectedShip.ship_pv}}]</td>
-									<td class="stats_cell">MOVEPOINTS[0]</td>
-									<td class="stats_cell">POSITION[{{selectedShip.ship_posX}}|{{selectedShip.ship_posY}}]</td>
-									<td class="stats_cell">FIREPOWER[00]</td>
-								</tr>
-							</table>
-						</div>
 						<div ng-show="user && game">
+							<div id="stats_bar" ng-show="selectedShip">
+								<table border="0">
+									<tr>
+										<td class="stats_cell">LIFEPOINTS[{{selectedShip.ship_pv}}]</td>
+										<td class="stats_cell">MOVEPOINTS[0]</td>
+										<td class="stats_cell">POSITION[{{selectedShip.ship_posX}}|{{selectedShip.ship_posY}}]</td>
+										<td class="stats_cell">FIREPOWER[00]</td>
+									</tr>
+								</table>
+							</div>
 							<div ng-show="user.must_play" class="container">
 								<h2>Choose the ship to use this turn</h2>
 								<div class="selected_ship" ng-show="!selectedShip && s.ship_pv > 0" value="{{ s.ship_id }}" class="ship" ng-repeat="s in game.ships | filter: { user_id: user.id }" ng-click="selectShip(s.ship_id)" ng-class="{shipSelected: s === selectedShip}">
@@ -51,7 +51,7 @@
 									<button ng-click="rotate('none')">Don't rotate</button>
 								</div>
 								<div ng-show="rotationDone && !moved">
-									<button ng-click="moveForward()">Move forward</button>
+									<button ng-click="moveForward()">Move</button>
 								</div>
 								<div ng-show="rotationDone && moved">
 									<button ng-click="shoot()">Fire !</button>
