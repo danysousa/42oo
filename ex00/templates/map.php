@@ -55,6 +55,9 @@
 									<div ng-show="rotationDone && !moved">
 										<button ng-click="moveForward()">Move forward</button>
 									</div>
+									<div ng-show="rotationDone && moved">
+										<button ng-click="shoot()">Fire !</button>
+									</div>
 								</div>
 								<canvas id="myCanvas" width="1600" height="1000" style="border:1px solid #000000; background: #141A1F"></canvas>
 							</div>
@@ -81,4 +84,4 @@
 			}
 		</style>
 	</BODY>
-</HTML> 
+</HTML>

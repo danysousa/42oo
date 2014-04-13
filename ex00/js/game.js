@@ -72,7 +72,7 @@
 	}
 
 	var game = angular.module('gameApp', []);
- 
+
 	game.controller('ActionFormCtrl', function ($http, $scope) {
 		$http.get('index.php?action=xhrUser').success(function(user) {
 			if (!user.must_play) {
@@ -164,6 +164,24 @@
 				drawObjects($scope.game.ships);
 			});
 		}
+		$scope.shoot = function() {
+			$http({
+				url: 'index.php?action=postShoot',
+				method: "POST"
+			}).success(function(data) {
+				// if the ship was out of bounds and died
+				if (data.shipDied) {
+					alert('Your ship just died... :(');
+					return;
+				}
+				// if the ship hit another ship, lock it !
+				if (data.shipLocked) {
+					alert('Your ship was locked :(');
+					return;
+				}
+			});
+		}
+
 	});
 
 })();
