@@ -164,11 +164,18 @@ return function() {
 		array(
 			$ship['id']
 		));
-	$next_user = app()->get('db')->queryOne("SELECT id_user FROM flotte WHERE id_partie LIKE ? AND id_user != ?",
+	$next_user = app()->get('db')->queryOne("SELECT id_user FROM flotte WHERE id_partie LIKE ? AND id_user > ? ORDER BY id_user ASC",
 		array(
 			$game['id'],
 			$player['id']
 		));
+	if (!$next_user)
+	{
+		$next_user = app()->get('db')->queryOne("SELECT id_user FROM flotte WHERE id_partie LIKE ? ORDER BY id_user ASC",
+		array(
+			$game['id']
+		));
+	}
 	if ($next_user)
 	{
 		app()->get('db')->queryOne("UPDATE partie set id_current_player =  ?",
