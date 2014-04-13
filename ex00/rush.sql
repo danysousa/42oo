@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost:3306
--- Généré le :  Dim 13 Avril 2014 à 06:00
+-- Généré le :  Dim 13 Avril 2014 à 06:09
 -- Version du serveur :  5.5.36
 -- Version de PHP :  5.4.26
 
@@ -84,7 +84,6 @@ CREATE TABLE IF NOT EXISTS `user` (
   `score` int(11) NOT NULL,
   `defaite` int(11) NOT NULL,
   `id_vaisseau` int(11) NOT NULL,
-  `pp` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
@@ -92,8 +91,8 @@ CREATE TABLE IF NOT EXISTS `user` (
 -- Contenu de la table `user`
 --
 
-INSERT INTO `user` (`id`, `name`, `pwd`, `id_partie`, `score`, `defaite`, `id_vaisseau`, `pp`) VALUES
-(2, 'dsousa', 'c387b89fe8d1f3505d3342fc6bab16a35becc6f41a5e63e92461c516897c0e4c268ca1704707af3939d1577e8d46ff567009e94d19de8033a1b2e3dc8eb6b751', 6, 0, 0, 0, 0);
+INSERT INTO `user` (`id`, `name`, `pwd`, `id_partie`, `score`, `defaite`, `id_vaisseau`) VALUES
+(2, 'dsousa', 'c387b89fe8d1f3505d3342fc6bab16a35becc6f41a5e63e92461c516897c0e4c268ca1704707af3939d1577e8d46ff567009e94d19de8033a1b2e3dc8eb6b751', 6, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -110,6 +109,10 @@ CREATE TABLE IF NOT EXISTS `vaisseau` (
   `portee` enum('courte','moyenne','longue') NOT NULL,
   `mobile` int(11) NOT NULL,
   `rot` enum('north','east','south','west') NOT NULL,
+  `pp_shield` int(11) NOT NULL,
+  `pp_gun` int(11) NOT NULL,
+  `pp_speed` int(11) NOT NULL,
+  `pp_total` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
@@ -117,12 +120,12 @@ CREATE TABLE IF NOT EXISTS `vaisseau` (
 -- Contenu de la table `vaisseau`
 --
 
-INSERT INTO `vaisseau` (`id`, `class`, `posX`, `posY`, `pv`, `portee`, `mobile`, `rot`) VALUES
-(1, 'HonorableDuty', 0, 0, 5, 'courte', 1, 'north'),
-(2, 'SwordOfAbsolution', 0, 0, 4, 'courte', 1, 'north'),
-(3, 'HonorableDuty', 0, 0, 5, 'courte', 1, 'north'),
-(4, 'HonorableDuty', 0, 0, 5, 'courte', 1, 'north'),
-(5, 'SwordOfAbsolution', 0, 0, 4, 'courte', 1, 'north');
+INSERT INTO `vaisseau` (`id`, `class`, `posX`, `posY`, `pv`, `portee`, `mobile`, `rot`, `pp_shield`, `pp_gun`, `pp_speed`, `pp_total`) VALUES
+(1, 'HonorableDuty', 0, 0, 5, 'courte', 1, 'north', 0, 0, 0, 0),
+(2, 'SwordOfAbsolution', 0, 0, 4, 'courte', 1, 'north', 0, 0, 0, 0),
+(3, 'HonorableDuty', 0, 0, 5, 'courte', 1, 'north', 0, 0, 0, 0),
+(4, 'HonorableDuty', 0, 0, 5, 'courte', 1, 'north', 0, 0, 0, 0),
+(5, 'SwordOfAbsolution', 0, 0, 4, 'courte', 1, 'north', 0, 0, 0, 0);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
