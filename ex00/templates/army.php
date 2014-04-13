@@ -16,6 +16,8 @@
 		$BlueLeaf = $instance->toJson();
 		$instance = new BloodPuller(0, 0, $player);
 		$BloodPuller = $instance->toJson();
+		$instance = new PurpleDeath(0, 0, $player);
+		$PurpleDeath = $instance->toJson();
 	?>
 </head>
 <body>
@@ -40,6 +42,7 @@
 			<option>SwordOfAbsolution</option>
 			<option>BlueLeaf</option>
 			<option>BloodPuller</option>
+			<option>PurpleDeath</option>
 		</select>
 		<div class="HonorableDuty">
 		<?php
@@ -79,6 +82,16 @@
 			echo 'Inertia: '.$BloodPuller['inertia'].'<br />';
 			echo 'LifePoints: '.$BloodPuller['pv'].'<br />';
 			echo 'ShieldPoints: '.$BloodPuller['shield'].'<br />';
+		?>
+		</div>
+		<div class="PurpleDeath">
+		<?php
+			echo '<img style="margin-bottom:20px;" src="'.str_replace('{{dir}}', '0', $PurpleDeath['sprite']).'">'.'<br />';
+			echo 'Name: '.$PurpleDeath['name'].'<br />';
+			echo 'Speed: '.$PurpleDeath['speed'].'<br />';
+			echo 'Inertia: '.$PurpleDeath['inertia'].'<br />';
+			echo 'LifePoints: '.$PurpleDeath['pv'].'<br />';
+			echo 'ShieldPoints: '.$PurpleDeath['shield'].'<br />';
 		?>
 		</div>
 	</div>
@@ -89,6 +102,7 @@
 			<option>SwordOfAbsolution</option>
 			<option>BlueLeaf</option>
 			<option>BloodPuller</option>
+			<option>PurpleDeath</option>
 		</select>
 		<div class="HonorableDuty">
 		<?php
@@ -128,6 +142,16 @@
 			echo 'Inertia: '.$BloodPuller['inertia'].'<br />';
 			echo 'LifePoints: '.$BloodPuller['pv'].'<br />';
 			echo 'ShieldPoints: '.$BloodPuller['shield'].'<br />';
+		?>
+		</div>
+		<div class="PurpleDeath">
+		<?php
+			echo '<img style="margin-bottom:20px;" src="'.str_replace('{{dir}}', '0', $PurpleDeath['sprite']).'">'.'<br />';
+			echo 'Name: '.$PurpleDeath['name'].'<br />';
+			echo 'Speed: '.$PurpleDeath['speed'].'<br />';
+			echo 'Inertia: '.$PurpleDeath['inertia'].'<br />';
+			echo 'LifePoints: '.$PurpleDeath['pv'].'<br />';
+			echo 'ShieldPoints: '.$PurpleDeath['shield'].'<br />';
 		?>
 		</div>
 	</div>
@@ -138,6 +162,7 @@
 			<option>SwordOfAbsolution</option>
 			<option>BlueLeaf</option>
 			<option>BloodPuller</option>
+			<option>PurpleDeath</option>
 		</select>
 		<div class="HonorableDuty">
 		<?php
@@ -177,6 +202,16 @@
 			echo 'Inertia: '.$BloodPuller['inertia'].'<br />';
 			echo 'LifePoints: '.$BloodPuller['pv'].'<br />';
 			echo 'ShieldPoints: '.$BloodPuller['shield'].'<br />';
+		?>
+		</div>
+		<div class="PurpleDeath">
+		<?php
+			echo '<img style="margin-bottom:20px;" src="'.str_replace('{{dir}}', '0', $PurpleDeath['sprite']).'">'.'<br />';
+			echo 'Name: '.$PurpleDeath['name'].'<br />';
+			echo 'Speed: '.$PurpleDeath['speed'].'<br />';
+			echo 'Inertia: '.$PurpleDeath['inertia'].'<br />';
+			echo 'LifePoints: '.$PurpleDeath['pv'].'<br />';
+			echo 'ShieldPoints: '.$PurpleDeath['shield'].'<br />';
 		?>
 		</div>
 	</div>
