@@ -26,30 +26,27 @@
 						</tr>
 					</table>
 				<div id="global_block">
-
 						<div ng-app="gameApp">
 						<div ng-controller="ActionFormCtrl">
 							<div ng-show="user && game">
-								<div ng-show="user.must_play">
+								<div ng-show="user.must_play" class="container">
 									<h2>Choose the ship to use this turn</h2>
-									<div ng-show="!selectedShip && s.ship_pv > 0" value="{{ s.ship_id }}" class="ship" ng-repeat="s in game.ships | filter: { user_id: user.id }" ng-click="selectShip(s.ship_id)" ng-class="{shipSelected: s === selectedShip}">
-										<h3>{{ s.ship_class }} [ {{ s.ship_posX }}, {{ s.ship_posY }}]</h3>
+									<div class="selected_ship" ng-show="!selectedShip && s.ship_pv > 0" value="{{ s.ship_id }}" class="ship" ng-repeat="s in game.ships | filter: { user_id: user.id }" ng-click="selectShip(s.ship_id)" ng-class="{shipSelected: s === selectedShip}">
 										<img ng-src="img/{{ s.ship_class }}_0.png" alt="">
 									</div>
-									<div ng-show="selectedShip && !repartitionSubmitted">
-										<h3>Weapon points</h3>
+									<div class="selected_ship" ng-show="selectedShip && !repartitionSubmitted">
+										<span class="indication">Weapon points</span>
 										<input type="range" name="valueRepartitionWeapons" ng-model="weaponPointsValue" ng-change="percentCalc('valueRepartitionWeapons')" value="{{maxRange / 2}}" min="1" max="{{maxRange}}"><br>
-										<h3>Move points</h3>
+										<span class="indication">Move points</span>
 										<input type="range" name="valueRepartitionMove" ng-model="movePointsValue" ng-change="percentCalc('valueRepartitionMove')" value="{{maxRange / 2}}" min="1" max="{{maxRange}}"><br>
 										<button ng-click="submitRepartition()">Go !</button>
 									</div>
 									<div ng-show="repartitionSubmitted && !rotationDone">
-										<h3>Rotate ?</h3>
-										<button ng-click="rotate('south')">Turn south</button><br>
-										<button ng-click="rotate('north')">Turn north</button><br>
-										<button ng-click="rotate('west')">Turn west</button><br>
-										<button ng-click="rotate('east')">Turn east</button><br>
-
+										<span class="indication">Rotate ?</span><br /><br />
+										<button ng-click="rotate('south')">To South</button><br>
+										<button ng-click="rotate('north')">To North</button><br>
+										<button ng-click="rotate('west')">To West</button><br>
+										<button ng-click="rotate('east')">To East</button><br>
 										<button ng-click="rotate('none')">Don't rotate</button>
 									</div>
 									<div ng-show="rotationDone && !moved">
