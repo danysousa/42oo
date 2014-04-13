@@ -64,7 +64,7 @@
 	}
 
 	var game = angular.module('gameApp', []);
- 
+
 	game.controller('ActionFormCtrl', function ($http, $scope) {
 		$http.get('index.php?action=xhrUser').success(function(user) {
 			if (!user.must_play) {
@@ -159,6 +159,24 @@
 			});
 		}
 
+			$scope.shoot = function() {
+			$http({
+				url: 'index.php?action=postShoot',
+				method: "POST"
+			}).success(function(data) {
+				// if the ship was out of bounds and died
+				if (data.shipDied) {
+					alert('Your ship just died... :(');
+					return;
+				}
+				// if the ship hit another ship, lock it !
+				if (data.shipLocked) {
+					alert('Your ship was locked :(');
+					return;
+				}
+			});
+		}
+
 		/*
 		$http.get('/ex00/index.php?action=player').success(function(player)
 		{
@@ -177,11 +195,11 @@
 		});
 		*/
 
-		// document.addEventListener('keydown', function(event) 
+		// document.addEventListener('keydown', function(event)
 		// {
 		// 	if ($scope.chosenShip)
 		// 	{
-		// 	    if(event.keyCode == KEY_LEFT) 
+		// 	    if(event.keyCode == KEY_LEFT)
 		// 	    {
 		// 			$http.get('/ex00/index.php?action=move&x=-1&y=0&id=').success(function(objects)
 		// 			{
@@ -191,7 +209,7 @@
 		// 				$scope.objects = objects;
 		// 			});
 		// 	    }
-		// 	    else if(event.keyCode == KEY_RIGHT) 
+		// 	    else if(event.keyCode == KEY_RIGHT)
 		// 	    {
 		// 			$http.get('/ex00/index.php?action=move&x=1&y=0').success(function(objects)
 		// 			{
@@ -201,7 +219,7 @@
 		// 				$scope.objects = objects;
 		// 			});
 		// 	    }
-		// 	    else if(event.keyCode == KEY_UP) 
+		// 	    else if(event.keyCode == KEY_UP)
 		// 	    {
 		// 			$http.get('/ex00/index.php?action=move&x=0&y=1').success(function(objects)
 		// 			{
@@ -209,9 +227,9 @@
 		// 				drawGrid(150, 100);
 		// 				drawObjects(objects);
 		// 				$scope.objects = objects;
-		// 			}); 
+		// 			});
 		// 	    }
-		// 	    else if(event.keyCode == KEY_DOWN) 
+		// 	    else if(event.keyCode == KEY_DOWN)
 		// 	    {
 		// 			$http.get('/ex00/index.php?action=move&x=0&y=-1').success(function(objects)
 		// 			{

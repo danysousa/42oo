@@ -80,6 +80,7 @@ $actions = array(
 	'postTurnSubmitRepartition' => require __DIR__ . '/controllers/postTurnSubmitRepartition.php',
 	'postTurnSubmitRotation' => require __DIR__ . '/controllers/postTurnSubmitRotation.php',
 	'postTurnSubmitMove' => require __DIR__ . '/controllers/postTurnSubmitMove.php',
+	'postShoot' => require __DIR__ . '/controllers/postShoot.php',
 );
 
 // check if an action applies for this request and execute it
