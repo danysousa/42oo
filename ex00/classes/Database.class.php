@@ -39,7 +39,7 @@ class Database {
 			}
 		}
 		if (mysqli_stmt_execute($stmt) === false) {
-			throw new Exception('Could not execute query: ' . $sql);
+			throw new Exception('Could not execute query: ' . $sql . ' with params [' . implode(',', $params) . ']');
 		}
 		if (($result = mysqli_stmt_get_result($stmt)) === false) {
 			return null;
