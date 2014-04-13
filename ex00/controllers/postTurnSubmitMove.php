@@ -50,7 +50,7 @@ return function() {
 		$y = $ship['rot'] == 'north' ? $y - ($ship['class']::SPEED + $ship['pp_speed']) : $y + ($ship['class']::SPEED + $ship['pp_speed']);
 
 		// check for collisions
-		$shipInstance = new $ship['class']($ship['posX'], $y, null);
+		$shipInstance = new $ship['class']($ship['posX'], $y, new Player('name', Player::ACTIVE, 'sessionid'));
 
 		// no collision, go ahead and move the ship
 		// check bounds in X
@@ -58,7 +58,7 @@ return function() {
 			// check bounds in Y
 			&& $shipInstance->getY() >= 0 && $shipInstance->getY() < 100
 			// check actual collision
-			&& !$game->hasCollision($shipInstance)) {
+			&& !$gameInstance->hasCollision($shipInstance)) {
 			app()->get('db')->query("UPDATE vaisseau SET posY = ? WHERE id = ?", [
 				$y,
 				$ship['id']
@@ -79,7 +79,7 @@ return function() {
 
 
 		// check for collisions
-		$shipInstance = new $ship['class']($ship['posX'], $y, null);
+		$shipInstance = new $ship['class']($x, $ship['posY'], new Player('name', Player::ACTIVE, 'sessionid'));
 
 		// no collision, go ahead and move the ship
 		// check bounds in X
@@ -87,7 +87,7 @@ return function() {
 			// check bounds in Y
 			&& $shipInstance->getY() >= 0 && $shipInstance->getY() < 100
 			// check actual collision
-			&& !$game->hasCollision($shipInstance)) {
+			&& !$gameInstance->hasCollision($shipInstance)) {
 			app()->get('db')->query("UPDATE vaisseau SET posX = ? WHERE id = ?", [
 				$x,
 				$ship['id']
