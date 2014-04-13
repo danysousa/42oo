@@ -1,7 +1,7 @@
 <?php
 
 return function() {
-	$gameName = trim((string)$_POST['join_game_login']);
+	$gameName = trim((string)urldecode($_REQUEST['join_game_login']));
 	$login = app()->get('session')->get('login');
 
 	if ($login === false) {
