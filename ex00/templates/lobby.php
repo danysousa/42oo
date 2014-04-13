@@ -36,5 +36,11 @@
 				</div>
 			</div>
 		</center>
+		<script type="text/javascript">
+			setInterval(function() {
+				if (!$("[type='text']").is(":focus"))
+					window.location = window.location;
+			}, 3000);
+		</script>
 	</BODY>
 </HTML>
