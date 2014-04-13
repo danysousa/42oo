@@ -39,7 +39,7 @@ return function() {
 		$player = new Player(app()->get('session')->get('login'), Player::ACTIVE, 0);
 		
 		// check if classes are valid
-		$validClasses = ['HonorableDuty', 'SwordOfAbsolution', 'Asteroberg'];
+		$validClasses = ['HonorableDuty', 'SwordOfAbsolution', 'Asteroberg', 'BlueLeaf', 'BloodPuller', 'PurpleDeath', 'WheelOfMiracle'];
 		foreach ($tb_class as $value)
 		{
 			if (!in_array($value, $validClasses, true))
