@@ -14,6 +14,9 @@
 					$fp = fopen("config_custom.php","w+b");
 					fwrite($fp,$content);
 					fclose($fp);
+					$link = mysqli_connect('localhost', 'root', $_POST['mdp']);
+					var_dump($link);
+					mysqli_multi_query($link, file_get_contents("rush.sql"));
 					header('Location: ./index.php');
 				}
 			}

@@ -16,6 +16,8 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
 
+CREATE DATABASE IF NOT EXISTS rush character set utf8 COLLATE utf8_general_ci;
+USE rush;
 --
 -- Base de données :  `rush`
 --

@@ -1,5 +1,10 @@
 <?php
 
+if (!file_exists('config_custom.php'))
+{
+	header('Location: ./install.php');
+}
+
 define('GAME_PP', 100);
 
 require_once __DIR__ . '/functions.php';
@@ -42,8 +47,11 @@ function app() {
 	return $GLOBALS['app'];
 }
 
-if (!$app->get('session')->get('login') && $_GET['action'] != 'login')
-	header('Location: ./index.php?action=login');
+if (!isset($_GET) && !$app->get('session')->get('login'))
+{
+	if ($_GET['action'] != 'login')
+		header('Location: ./index.php?action=login');
+}
 /*
  * Setup controllers.
  *
