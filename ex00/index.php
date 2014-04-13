@@ -93,8 +93,7 @@ if (isset($_GET['action']) && isset($actions[$_GET['action']])) {
 	}
 // or return a 404
 } else {
-	http_response_code(404);
-	echo sprintf("404, not found.");
+	header('Location: ./index.php?action=login');
 }
 
 /*
