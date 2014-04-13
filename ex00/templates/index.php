@@ -20,7 +20,7 @@
 				<a href="index.php?action=home" title="Home"><span id="header_title">[HOME:PAGE]</span></a>
 				<div id="global_block">
 					<div class="menu_block">
-						<span class="menu_block_typo">[LAUNCH]<img class="img_block" src="http://mmorpg-tactics.com/wp-content/uploads/2012/03/warhammer-online-logo-1812d25.png"></span>
+						<a href="index.php?action=gameMap" title="launch"<span class="menu_block_typo">[LAUNCH]<img class="img_block" src="http://mmorpg-tactics.com/wp-content/uploads/2012/03/warhammer-online-logo-1812d25.png"></span></a>
 					</div>
 					<div class="menu_block">
 						<a href="index.php?action=createGame" title="multi"><span class="menu_block_typo">[MULTI]<img class="img_block" src="http://www.fantasyflightgames.com/ffg_content/warhammer_lcg/empire-icon.png"></span></a>

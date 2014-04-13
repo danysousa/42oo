@@ -1,0 +1,251 @@
+::-webkit-input-placeholder
+{
+	background-color: black;
+	border: none;
+	outline: none;
+	font-size: 20px;
+	text-align: center;
+	color: #52AEF3;
+}
+
+:-moz-placeholder
+{
+	background-color: black;
+	border: none;
+	outline: none;
+	font-size: 20px;
+	text-align: center;
+	color: #52AEF3;
+}
+
+::-moz-placeholder
+{
+	background-color: black;
+	border: none;
+	outline: none;
+	font-size: 20px;
+	text-align: center;
+	color: #52AEF3;
+}
+
+:-ms-input-placeholder
+{
+	background-color: black;
+	border: none;
+	outline: none;
+	font-size: 20px;
+	text-align: center;
+	color: #52AEF3;
+}
+
+body
+{
+	background-repeat: no-repeat;
+	background-position: center;
+	background-image: url('http://wallpaperskd.com/wp-content/uploads/2012/02/scifi-spaceship-anime-art.jpg');
+	background-color: #060606;
+	margin: 0px;
+	padding: 0px;
+}
+
+a
+{
+	text-decoration: none;
+}
+
+p
+{
+	margin: 0px;
+	padding: 0px;
+}
+
+hr
+{
+	position: relative;
+	top: 150px;
+	color: #52AEF3;
+	outline-color: white;
+}
+
+form input
+{
+	float: left;
+	background-color: black;
+	border: none;
+	outline: none;
+	font-size: 20px;
+	text-align: center;
+	color: #52AEF3;
+}
+
+form input:hover
+{
+	background-color: black;
+	border-right: 1px #52AEF3 solid;
+	border-left: 1px #52AEF3 solid;
+	outline: none;
+	font-size: 20px;
+	text-align: center;
+	color: #52AEF3;
+}
+
+fieldset
+{
+	position: relative;
+	bottom: 10px;
+	float: left;
+	height: 780px;
+	width: 600px;
+	border: none;
+	background-color: #020202;
+	overflow: auto;
+}
+
+.float_img
+{
+	position: absolute;
+	top: 835px;
+	right: 20px;
+	left: 1400px;
+
+}
+
+#global
+{
+	width: 1600px;
+	height: 1440px;
+	background-color: black;
+	background-position: center;
+	background-repeat: no-repeat;
+	border-right: 5px #0C1A29 dashed;
+	border-left: 5px #0C1A29 dashed;
+	box-shadow: 0px 0px 120px #0C1A29;
+}
+
+#global_block
+{
+	position: relative;
+	width: 1600px;
+	height: 1000px;
+	border-top: 5px #0C1A29 solid;
+	border-bottom: 5px #0C1A29 solid;
+	box-shadow: 0px 0px 120px #111111;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-image: url('');
+}
+
+#log_bar
+{
+	background-color: #080808;
+	height: 32px;
+}
+
+.header_cell a
+{
+	color:white;
+	text-decoration: none;
+	font-size: 22px;
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
+.header_cell:hover a
+{
+	color:white;
+	text-decoration: underline;
+	background-color: #121212;
+	font-size: 22px;
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
+#header_title
+{
+	position: relative;
+	top: 80px;
+	color: #52AEF3;
+	font-size: 80px;
+	font-weight: normal;
+	font-family: monospace;
+}
+
+.menu_block
+{
+	display: inline-block;
+	position: relative;
+	top: 20px;
+	width: 950px;
+	height: 800px;
+	background-color: #080808;
+	border: 5px black solid;
+	background-image: url('../img/Body_Pattern.png');
+}
+
+.menu_block_typo
+{
+	position: relative;
+	top: 50px;
+	color: #F2F2F2;
+	font-size: 45px;
+	font-weight: normal;
+	font-family: monospace;
+	text-align: center;
+}
+
+.img_block
+{
+	position: relative;
+	margin-top: 20px;
+	width: 225px;
+	height: 200px;
+}
+
+#badge
+{
+	position: relative;
+	left: 20px;
+	width: 600px;
+	height: 200px;
+}
+
+#level
+{
+	font-size: 32px;
+	color: white;
+	font-family: monospace;
+}
+
+#profile_img
+{
+	position: relative;
+	top: 350px;
+	width: 250px;
+	height: 250px;
+}
+
+#stats_bar
+{
+	position: relative;
+	background-color: #080808;
+	height: 32px;
+	top: 200px;
+	bottom: 1px;
+	border-top: 5px dashed #0C1A29;
+}
+
+.stats_cell
+{
+	font-family: monospace;
+	color: #52AEF3;
+	text-decoration: none;
+	font-size: 22px;
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
+td .stats_cell
+{
+	margin-left: 20px;
+	margin-right: 20px;
+}
