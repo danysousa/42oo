@@ -45,18 +45,28 @@
 		ctx.clearRect(0, 0, 3000, 3000);
 		objects.forEach(function(el, i)
 		{
-			var img = new Image(el.ship_w * factor.x, el.ship_h * factor.y);
-			img.style.outline = '1px solid red';
-			// set the right sprite for the given object direction
-			img.src = el.ship_sprite.replace('{{dir}}', getDirIndex(el.ship_dir));
-			img.onload = function()
-			{
-				// west or east
-				if (el.direction % 2 === 0)
-					//             image,  posX,                 posY,                   width,                height
-					ctx.drawImage(img, el.ship_posX * factor.x, el.ship_posY * factor.y, el.ship_h * factor.y, el.ship_w * factor.x);
-				else
-					ctx.drawImage(img, el.ship_posX * factor.x, el.ship_posY * factor.y, el.ship_w * factor.x, el.ship_h * factor.y);
+			// ships that are alive show their sprite
+			if (el.ship_pv > 0) {
+				var img = new Image(el.ship_w * factor.x, el.ship_h * factor.y);
+				// set the right sprite for the given object direction
+				img.src = el.ship_sprite.replace('{{dir}}', getDirIndex(el.ship_dir));
+				img.onload = function() {
+					// west or east
+					if (el.direction % 2 === 0)
+						//             image,  posX,                 posY,                   width,                height
+						ctx.drawImage(img, el.ship_posX * factor.x, el.ship_posY * factor.y, el.ship_h * factor.y, el.ship_w * factor.x);
+					else
+						ctx.drawImage(img, el.ship_posX * factor.x, el.ship_posY * factor.y, el.ship_w * factor.x, el.ship_h * factor.y);
+				}
+			} else {
+				// dead ships show something else
+				var img = new Image(50, 50);
+				// set the right sprite for the given object direction
+				img.src = '/ex00/img/redcross.png';
+				img.onload = function() {
+					//             image,  posX,                 posY,                  width, height
+					ctx.drawImage(img, el.ship_posX * factor.x, el.ship_posY * factor.y, 50, 50);
+				}
 			}
 		});
 	}
