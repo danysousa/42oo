@@ -51,7 +51,24 @@ return function() {
 				$id[0]['id']
 			));
 		}
+
+		/*
+		**
+		**	L'enregistrement en bdd est fait, il reste a recuperer les valeurs
+		**	initial tel que la position, et la portee (non presente pour le moment dans la class)
+		**
+		*/
+
+
 		echo "Success !";
+
+
+		/*
+		**
+		**	redirection vers la map !
+		**
+		*/
+
 	}
 	else
 		echo app()->get('view')->render('army');
