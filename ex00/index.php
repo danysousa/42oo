@@ -63,6 +63,8 @@ $actions = array(
 	'postJoinGame' => require __DIR__ . '/controllers/postJoinGame.php',
 	// view the game board
 	'viewGameBoard' => require __DIR__ . '/controllers/viewGameBoard.php',
+	// the script that saves when a player create his own army
+	'postCreateArmy' => require __DIR__ . '/controllers/postCreateArmy.php',
 
 	// XHR API for AngularJS
 	// get information about the currently logged in user
