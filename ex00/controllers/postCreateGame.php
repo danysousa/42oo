@@ -18,11 +18,11 @@ return function() {
 	}
 
 	app()->get('db')->query("INSERT INTO partie (pts, id_admin, id_current_player, start, max_player, name) VALUES (?, ?, ?, ?, ?, ?)", [
-		500, // ship points
+		(int)$_POST['create_ship_points'],
 		$user['id'],
 		$user['id'],
-		false,
-		4, // max players
+		false, // not yet started
+		(int)$_POST['create_max_players'],
 		$gameName
 	]);
 	$id_partie = app()->get('db')->query("SELECT id FROM partie WHERE name LIKE ?", array(

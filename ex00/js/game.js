@@ -58,6 +58,27 @@
 				$scope.game = game;
 			});
 		});
+
+		$scope.selectShip = function(id) {
+			$scope.game.ships.forEach(function(el) {
+				if (el.ship_id === id)
+					$scope.selectedShip = el;
+			});
+		}
+
+		$scope.percentCalc = function(element)
+		{
+			var base = 50;
+			if (element === 'valueRepartitionWeapons')
+			{
+				$scope.movePointsValue = 400 - $scope.weaponPointsValue;
+			}
+			else
+			{
+				$scope.weaponPointsValue = 400 - $scope.movePointsValue;
+			}
+		}
+
 		/*
 		$http.get('/ex00/index.php?action=player').success(function(player)
 		{
