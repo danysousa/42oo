@@ -1,5 +1,5 @@
 <?php
-	
+
 	return function(){
 
 		$login = app()->get('session')->get('login');
@@ -24,7 +24,7 @@
 		$history[] = $newMessage;
 		$historyLog[] = '<p class="chat_typo" style="color:white;text-align:left;font-size:16px;font-family:monospace;">'.$newMessage['date'].' '.$newMessage['login'].':'.'</p><p style="color:#52AEF3;text-align:left;font-family:monospace;font-size:18px;">'.$newMessage['message'].'</p><br /><br />';
 
-		$_SESSION['chatLog'] = implode('', $historyLog);
+		app()->get('session')->set('chatLog', implode('', $historyLog));
 
 		file_put_contents('./private/logs', serialize($history));
 		header('Location: index.php?action=lobby');

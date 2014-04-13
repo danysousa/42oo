@@ -24,17 +24,17 @@
 					<div id="lobby_block">
 					<div id="chat_block">
 					<fieldset>
-    					<?php print $_SESSION['chatLog']; ?>
-    				</fieldset>
-    				</div>
-    				</div>
-    				<form class="lobby_block_typo" action="index.php?action=getChatMsg" method="POST">
-    						<input type="text" name="message" id="chat_msg" placeholder="[MESSAGE]" size="40">
-    						<input type="submit" value="Send" size="10">
-    				</form>
+					<?php print app()->get('session')->get('chatLog'); ?>
+					</fieldset>
+					</div>
+					</div>
+					<form class="lobby_block_typo" action="index.php?action=getChatMsg" method="POST">
+							<input type="text" name="message" id="chat_msg" placeholder="[MESSAGE]" size="40">
+							<input type="submit" value="Send" size="10">
+					</form>
 					</div>
 				</div>
 			</div>
 		</center>
 	</BODY>
-</HTML> 
+</HTML>
