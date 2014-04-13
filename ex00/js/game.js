@@ -49,9 +49,9 @@
 			x = el.ship_posX * factor.x;
 			y = el.ship_posY * factor.y;
 			// west or east
-			if (el.direction % 2 === 0) {
-				w = el.ship_h * factor.y
-				h = el.ship_w * factor.x
+			if (getDirIndex(el.ship_dir) % 2 === 0) {
+				w = el.ship_h * factor.x
+				h = el.ship_w * factor.y
 			} else {
 				w = el.ship_w * factor.x
 				h = el.ship_h * factor.y
@@ -76,7 +76,7 @@
 				img.src = '/ex00/img/redcross.png';
 				img.onload = function() {
 					//             image,  posX,                 posY,                  width, height
-					ctx.drawImage(img, el.ship_posX * factor.x, el.ship_posY * factor.y, 50, 50);
+					ctx.drawImage(img, x + w / 2 - 25, y + h / 2 - 25, 50, 50);
 				}
 			}
 		});
