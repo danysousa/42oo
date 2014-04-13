@@ -8,7 +8,7 @@ return function() {
 	if ($login === false) {
 		die(json_encode(null));
 	}
-	$user = app()->get('db')->queryOne("SELECT id, name, id_partie, score, defaite FROM user WHERE name = ?", [
+	$user = app()->get('db')->queryOne("SELECT id, name, id_partie, score, defaite, id_vaisseau, pp FROM user WHERE name = ?", [
 		$login
 	]);
 	if ($user === null) {

@@ -78,7 +78,6 @@
 		}
 
 		$scope.submitRepartition = function() {
-			var pp = 15;
 			$http.post('index.php?action=postTurnSubmitRepartition', {
 				shipId: $scope.selectedShip.ship_id,
 				move: parseInt($scope.movePointsValue) / $scope.maxRange * pp,
@@ -103,6 +102,7 @@
 		}
 
 		$scope.moveForward = function() {
+			$scope.moveLocked = true;
 			$http.post('index.php?action=postTurnSubmitMove', {
 				direction: dir
 			}).success(function(data) {
