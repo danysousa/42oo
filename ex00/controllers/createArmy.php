@@ -5,7 +5,8 @@ return function() {
 	$login = app()->get('session')->get('login');
 
 	if ($login === false) {
-		die('Must be logged in.');
+		header('location: index.php?action=login');
+		die();
 	}
 
 	echo app()->get('view')->render('army');

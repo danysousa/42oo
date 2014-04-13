@@ -53,11 +53,12 @@ return function() {
 			// $value is the class name of the ship
 
 			// while the coords make a collision, make new coords
-			$instance = new $value(rand(0, 100 - 1 - $value::W), rand(0, 150 - 1 - $value::H), $player);
+			$instance = new $value(rand(0, 150 - 1 - $value::W), rand(0, 100 - 1 - $value::H), $player);
 			while ($game->hasCollision($instance)) {
 				$instance->setX(rand(0, 150 - 1 - $value::W));
 				$instance->setY(rand(0, 100 - 1 - $value::H));
 			}
+			$game->addShip($instance);
 			printf("Adding instance %s at %d / %d\n", $value, $instance->getX(), $instance->getY());
 			$pv = $instance->getPv();
 			$id = app()->get('db')->query("INSERT INTO vaisseau (class, posX, posY, pv, portee, mobile, pp_shield, pp_gun, pp_speed, pp_total)

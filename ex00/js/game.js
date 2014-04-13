@@ -40,23 +40,34 @@
 		return dirs[dir];
 	}
 
-	function drawObjects(objects)
+	function drawObjects(objects, user)
 	{
 		ctx.clearRect(0, 0, 3000, 3000);
 		objects.forEach(function(el, i)
 		{
+			var w, h, x, y;
+			x = el.ship_posX * factor.x;
+			y = el.ship_posY * factor.y;
+			// west or east
+			if (el.direction % 2 === 0) {
+				w = el.ship_h * factor.y
+				h = el.ship_w * factor.x
+			} else {
+				w = el.ship_w * factor.x
+				h = el.ship_h * factor.y
+			}
+			ctx.beginPath();
+			ctx.rect(x, y, w, h);
+			ctx.lineWidth = 2;
+			ctx.strokeStyle = el.user_id === user.id ? 'green' : 'red';
+			ctx.stroke();
 			// ships that are alive show their sprite
 			if (el.ship_pv > 0) {
 				var img = new Image(el.ship_w * factor.x, el.ship_h * factor.y);
 				// set the right sprite for the given object direction
 				img.src = el.ship_sprite.replace('{{dir}}', getDirIndex(el.ship_dir));
 				img.onload = function() {
-					// west or east
-					if (el.direction % 2 === 0)
-						//             image,  posX,                 posY,                   width,                height
-						ctx.drawImage(img, el.ship_posX * factor.x, el.ship_posY * factor.y, el.ship_h * factor.y, el.ship_w * factor.x);
-					else
-						ctx.drawImage(img, el.ship_posX * factor.x, el.ship_posY * factor.y, el.ship_w * factor.x, el.ship_h * factor.y);
+					ctx.drawImage(img, x, y, w, h);
 				}
 			} else {
 				// dead ships show something else
@@ -85,7 +96,7 @@
 				$scope.user = user;
 				$scope.game = game;
 
-				drawObjects($scope.game.ships);
+				drawObjects($scope.game.ships, $scope.user);
 			});
 		});
 
@@ -140,7 +151,7 @@
 				}).success(function(data) {
 					$scope.selectedShip.ship_dir = direction;
 					$scope.rotationDone = true;
-					drawObjects($scope.game.ships);
+					drawObjects($scope.game.ships, $scope.user);
 				});
 			} else {
 				$scope.rotationDone = true;
@@ -162,7 +173,7 @@
 				}
 				$scope.selectedShip.ship_posX = data.x;
 				$scope.selectedShip.ship_posY = data.y;
-				drawObjects($scope.game.ships);
+				drawObjects($scope.game.ships, $scope.user);
 			});
 		}
 		$scope.shoot = function() {
