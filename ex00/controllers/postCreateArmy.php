@@ -37,7 +37,7 @@ return function() {
 		if ($count == 3)
 			header("Location: ./index.php?action=createArmy");
 		$player = new Player(app()->get('session')->get('login'), Player::ACTIVE, 0);
-		
+
 		// check if classes are valid
 		$validClasses = ['HonorableDuty', 'SwordOfAbsolution', 'Asteroberg', 'BlueLeaf', 'BloodPuller', 'PurpleDeath', 'WheelOfMiracle'];
 		foreach ($tb_class as $value)
@@ -45,7 +45,7 @@ return function() {
 			if (!in_array($value, $validClasses, true))
 				die('Invalid ship class.');
 		}
-		
+
 		$game = getGame($partie['id_partie']);
 
 		foreach ($tb_class as $value)
@@ -58,8 +58,9 @@ return function() {
 				$instance->setX(rand(0, 150 - 1 - $value::W));
 				$instance->setY(rand(0, 100 - 1 - $value::H));
 			}
+			
 			$game->addShip($instance);
-			printf("Adding instance %s at %d / %d\n", $value, $instance->getX(), $instance->getY());
+
 			$pv = $instance->getPv();
 			$id = app()->get('db')->query("INSERT INTO vaisseau (class, posX, posY, pv, portee, mobile, pp_shield, pp_gun, pp_speed, pp_total)
 				VALUES (?, ?, ?, ?, ?, 1, ?, ?, ?, ?)",
@@ -81,24 +82,7 @@ return function() {
 				$id['id']
 			));
 		}
-
-		/*
-		**
-		**	L'enregistrement en bdd est fait, il reste a recuperer les valeurs
-		**	initial tel que la position, et la portee (non presente pour le moment dans la class)
-		**
-		*/
-
-
-		echo "Success !";
-
-
-		/*
-		**
-		**	redirection vers la map !
-		**
-		*/
-
+		header('Location: ./index.php?action=gameMap');
 	}
 	else
 		echo app()->get('view')->render('army');

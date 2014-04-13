@@ -33,5 +33,5 @@ return function() {
 		app()->get('session')->get('id_usr')
 	));
 
-	echo 'Successfully created the game!';
+	header('Location: ./index.php?action=createArmy&join_game_login='.urlencode($_POST['create_game_name']));
 };
