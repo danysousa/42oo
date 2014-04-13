@@ -53,7 +53,7 @@ $actions = array(
 	'logout' => require_once __DIR__.'/controllers/logout.php',
 	'home' => require_once __DIR__ . '/controllers/home.php',
 	'profile' => require_once __DIR__.'/controllers/profile.php',
-	'lobby' => require_once __DIR__.'/controllers/lobby.php',
+	'lobby' => require_once __DIR__.'/controllers/lobbyChat.php',
 	'gameMap' => require_once __DIR__.'/controllers/map.php',
 	'createArmy' => require_once __DIR__.'/controllers/createArmy.php',
 	// the page that allows to create a game or join a game
