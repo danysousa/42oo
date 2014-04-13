@@ -72,7 +72,12 @@ $actions = array(
 	'xhrUser' => require __DIR__ . '/controllers/xhrUser.php',
 	// get the game associated with the currently logged in user
 	'xhrGame' => require __DIR__ . '/controllers/xhrGame.php',
-	'getChatMsg' => require __DIR__ . '/controllers/lobbyChat.php'
+	'getChatMsg' => require __DIR__ . '/controllers/lobbyChat.php',
+
+	// Choosing, rotating, moving and shooting
+	'postTurnSubmitRepartition' => require __DIR__ . '/controllers/postTurnSubmitRepartition.php',
+	'postTurnSubmitRotation' => require __DIR__ . '/controllers/postTurnSubmitRotation.php',
+	'postTurnSubmitMove' => require __DIR__ . '/controllers/postTurnSubmitMove.php',
 );
 
 // check if an action applies for this request and execute it

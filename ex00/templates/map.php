@@ -33,7 +33,7 @@
 								<h2>Choose the ship to use this turn</h2>
 								<div value="{{ s.ship_id }}" class="ship" ng-repeat="s in game.ships | filter: { user_id: user.id }" ng-click="selectShip(s.ship_id)" ng-class="{shipSelected: s === selectedShip}">
 									<h3>{{ s.ship_class }} [ {{ s.ship_posX }}, {{ s.ship_posY }}]</h3>
-									<img src="img/{{ s.ship_class }}_0.png" alt="">
+									<img ng-src="img/{{ s.ship_class }}_0.png" alt="">
 								</div>
 								<div ng-show="selectedShip && !repartitionSubmitted">
 									<input type="hidden" value="{{selectShip.ship_id}}">
