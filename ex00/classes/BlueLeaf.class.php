@@ -5,7 +5,8 @@ class BlueLeaf extends Ship
 	const W = 12;
 	const H = 7;
 	const SPEED = 18;
-	
+	const SPRITE = "/ex00/img/BlueLeaf_{{dir}}.png";
+
 	public function __construct($x, $y, Player $player)
 	{
 		$name = "Blue Leaf";
@@ -16,7 +17,7 @@ class BlueLeaf extends Ship
 		$speed = self::SPEED;
 		$inertia = 4;
 		$shield = 0;
-		$sprite = "/ex00/img/BlueLeaf_{{dir}}.png";
+		$sprite = self::SPRITE;
 		$weapon = array();
 		parent::__construct($x, $y, $h, $w, $pv, $name, $sprite, $player, $speed, $inertia, $shield, $weapon);
 	}

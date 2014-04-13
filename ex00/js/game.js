@@ -157,6 +157,7 @@
 				// if the ship hit another ship, lock it !
 				if (typeof data.x === 'undefined') {
 					alert('Your ship just died from a collision! :(');
+					window.location = window.location;
 					return;
 				}
 				$scope.selectedShip.ship_posX = data.x;
@@ -179,7 +180,7 @@
 					alert('Your ship was locked :(');
 					return;
 				}
-				drawObjects($scope.game.ships);
+				window.location = window.location;
 			});
 		}
 

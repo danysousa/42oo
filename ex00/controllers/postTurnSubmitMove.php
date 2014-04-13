@@ -69,6 +69,41 @@ return function() {
 			]);
 		} else {
 			// ATOMIC BOMB ! The collisioner dies instantly !
+			app()->get('db')->query("UPDATE vaisseau SET pv = 0 WHERE id LIKE ?",
+			array(
+				$ship['id']
+			));
+			$next_user = app()->get('db')->queryOne("SELECT flotte.id_user FROM flotte
+			JOIN vaisseau v ON
+			v.id LIKE flotte.id_vaisseau
+			AND v.pv > 0
+			WHERE id_partie LIKE ? AND id_user > ? ORDER BY id_user ASC",
+			array(
+				$game['id'],
+				$player['id']
+			));
+			if (!$next_user)
+			{
+				$next_user = app()->get('db')->queryOne("SELECT flotte.id_user FROM flotte
+				JOIN vaisseau v ON
+				v.id LIKE flotte.id_vaisseau
+				AND v.pv > 0
+				WHERE id_partie LIKE ? ORDER BY id_user ASC",
+				array(
+					$game['id']
+				));
+			}
+			if ($next_user)
+			{
+				app()->get('db')->queryOne("UPDATE partie set id_current_player =  ?",
+					array(
+						$next_user['id_user']
+					));
+			}
+			app()->get('db')->query("UPDATE vaisseau SET has_shooted = 0, has_allocated = 0, has_rotated = 0 WHERE id LIKE ?",
+				array(
+					$ship['id']
+				));
 			echo json_encode('atomic');
 		}
 	}
@@ -98,6 +133,41 @@ return function() {
 			]);
 		} else {
 			// ATOMIC BOMB ! The collisioner dies instantly !
+			app()->get('db')->query("UPDATE vaisseau SET pv = 0 WHERE id LIKE ?",
+			array(
+				$ship['id']
+			));
+			$next_user = app()->get('db')->queryOne("SELECT flotte.id_user FROM flotte
+			JOIN vaisseau v ON
+			v.id LIKE flotte.id_vaisseau
+			AND v.pv > 0
+			WHERE id_partie LIKE ? AND id_user > ? ORDER BY id_user ASC",
+			array(
+				$game['id'],
+				$player['id']
+			));
+			if (!$next_user)
+			{
+				$next_user = app()->get('db')->queryOne("SELECT flotte.id_user FROM flotte
+				JOIN vaisseau v ON
+				v.id LIKE flotte.id_vaisseau
+				AND v.pv > 0
+				WHERE id_partie LIKE ? ORDER BY id_user ASC",
+				array(
+					$game['id']
+				));
+			}
+			if ($next_user)
+			{
+				app()->get('db')->queryOne("UPDATE partie set id_current_player =  ?",
+					array(
+						$next_user['id_user']
+					));
+			}
+			app()->get('db')->query("UPDATE vaisseau SET has_shooted = 0, has_allocated = 0, has_rotated = 0 WHERE id LIKE ?",
+				array(
+					$ship['id']
+				));
 			echo json_encode('atomic');
 		}
 	}
