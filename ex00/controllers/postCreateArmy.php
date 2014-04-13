@@ -55,8 +55,8 @@ return function() {
 			// while the coords make a collision, make new coords
 			$instance = new $value(rand(0, 100 - 1 - $value::W), rand(0, 150 - 1 - $value::H), $player);
 			while ($game->hasCollision($instance)) {
-				$instance->setX(rand(0, 100 - 1 - $value::W));
-				$instance->setY(rand(0, 150 - 1 - $value::H));
+				$instance->setX(rand(0, 150 - 1 - $value::W));
+				$instance->setY(rand(0, 100 - 1 - $value::H));
 			}
 			printf("Adding instance %s at %d / %d\n", $value, $instance->getX(), $instance->getY());
 			$pv = $instance->getPv();
