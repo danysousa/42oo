@@ -16,7 +16,7 @@ class Game extends Base
 
 	public function hasCollision(MapObject $o)
 	{
-		$collisionMatrix = new CollisionMatrix(GAME_NUM_ROWS, GAME_NUM_COLS);
+		$collisionMatrix = new CollisionMatrix(100, 150);
 		foreach ($this->getShips() as $s)
 		{
 			if ($s !== $o)

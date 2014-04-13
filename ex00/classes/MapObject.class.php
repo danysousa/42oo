@@ -50,7 +50,7 @@ abstract class MapObject extends Base
 		$this->setInitialShield($shield);
 
 		$this->direction = rand(0, 3);
-		$this->id = (int)microtime(true);
+		$this->id = md5((string)microtime(true));
 	}
 
 	public function reset()

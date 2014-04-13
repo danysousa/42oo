@@ -55,9 +55,9 @@
 					// west or east
 					if (el.direction % 2 === 0)
 						//             image,  posX,                 posY,                   width,                height
-						ctx.drawImage(img, el.ship_posX * factor.x, el.ship_posY * factor.y, el.ship_w * factor.y, el.ship_h * factor.x);
+						ctx.drawImage(img, el.ship_posX * factor.x, el.ship_posY * factor.y, el.ship_h * factor.y, el.ship_w * factor.x);
 					else
-						ctx.drawImage(img, el.ship_posX * factor.x, el.ship_posY * factor.y, el.ship_h * factor.x, el.ship_w * factor.y);
+						ctx.drawImage(img, el.ship_posX * factor.x, el.ship_posY * factor.y, el.ship_w * factor.x, el.ship_h * factor.y);
 				}
 			}
 		});

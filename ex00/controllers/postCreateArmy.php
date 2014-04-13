@@ -1,11 +1,42 @@
 <?php
 
+function getGame($gameId) {
+	// get the ships for this game
+	$gameShipsDb = app()->get('db')->query(
+		"SELECT v.id ship_id, v.rot ship_dir, v.class ship_class, v.posX ship_posX, v.posY ship_posY, u.id user_id, u.name user_name
+		FROM flotte f JOIN vaisseau v
+		ON f.id_vaisseau = v.id JOIN user u
+		ON u.id = f.id_user JOIN partie p
+		ON p.id = ?",
+		[
+			$gameId
+		]
+	);
+	
+	// add all presently available ships
+	$game = new Game();
+	foreach ($gameShipsDb as $dbShip) {
+		$game->addShip(new $dbShip['ship_class']($dbShip['ship_posX'], $dbShip['ship_posY'], new Player($dbShip['user_name'], Player::ACTIVE, 'sessionid')));
+	}
+
+	return $game;
+}
+
 return function() {
 
 	$login = app()->get('session')->get('login');
 
-	if ($login === false) {
+	if ($login === false || app()->get('session')->get('id_usr') === false) {
 		die('Must be logged in.');
+	}
+
+	// get the current game ID
+	$partie = app()->get('db')->queryOne("SELECT id_partie FROM user WHERE id LIKE ?", array(
+		app()->get('session')->get('id_usr')
+	));
+
+	if ($partie === null) {
+		die('Must have a game.');
 	}
 
 	if ($_POST['submit'] == "FIGHT !" && ($_POST['first'] || $_POST['second'] || $_POST['third']))
@@ -27,17 +58,36 @@ return function() {
 		}
 		if ($count == 3)
 			header("Location: ./index.php?action=createArmy");
-		$player = new Player(app()->get('session')->get('login'), 0, 0);
+		$player = new Player(app()->get('session')->get('login'), Player::ACTIVE, 0);
+		
+		// check if classes are valid
+		$validClasses = ['HonorableDuty', 'SwordOfAbsolution', 'Asteroberg'];
 		foreach ($tb_class as $value)
 		{
-			$instance = new $value(0, 0, $player);
+			if (!in_array($value, $validClasses, true))
+				die('Invalid ship class.');
+		}
+		
+		$game = getGame($partie['id_partie']);
+
+		foreach ($tb_class as $value)
+		{
+			// $value is the class name of the ship
+
+			// while the coords make a collision, make new coords
+			$instance = new $value(rand(0, 100 - 1 - $value::W), rand(0, 150 - 1 - $value::H), $player);
+			while ($game->hasCollision($instance)) {
+				$instance->setX(rand(0, 100 - 1 - $value::W));
+				$instance->setY(rand(0, 150 - 1 - $value::H));
+			}
+			printf("Adding instance %s at %d / %d\n", $value, $instance->getX(), $instance->getY());
 			$pv = $instance->getPv();
 			$id = app()->get('db')->query("INSERT INTO vaisseau (class, posX, posY, pv, portee, mobile, pp_shield, pp_gun, pp_speed, pp_total)
 				VALUES (?, ?, ?, ?, ?, 1, ?, ?, ?, ?)",
 				array(
 					$value,
-					0, // posX
-					0, // posY
+					$instance->getX(), // posX
+					$instance->getY(), // posY
 					$pv,
 					'courte', // range
 					0, // pp_shield
@@ -46,9 +96,6 @@ return function() {
 					0 // pp_total
 				));
 			$id = app()->get('db')->queryOne("SELECT id FROM vaisseau ORDER BY id DESC LIMIT 1", array());
-			$partie = app()->get('db')->queryOne("SELECT id_partie FROM user WHERE id LIKE ?", array(
-				app()->get('session')->get('id_usr')
-			));
 			app()->get('db')->query("INSERT INTO flotte (id_user, id_partie, id_vaisseau) VALUES(?, ?, ?)", array(
 				app()->get('session')->get('id_usr'),
 				$partie['id_partie'],
