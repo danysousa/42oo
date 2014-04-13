@@ -53,7 +53,7 @@
 									<button ng-click="rotate('none')">Don't rotate</button>
 								</div>
 								<div ng-show="rotationDone">
-									
+									Now, you can move your ship ! :)
 								</div>
 								<canvas id="myCanvas" width="1600" height="1000" style="border:1px solid #000000; background: white"></canvas>
 							</div>
