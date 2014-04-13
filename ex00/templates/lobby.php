@@ -12,9 +12,9 @@
 				<div id="log_bar">
 					<table border="0">
 						<tr>
-							<td class="header_cell"><a href="index.php?action=login" title="">LOGIN</a></td>
-							<td class="header_cell"><a href="index.php?action=login" title="">REGISTER</a></td>
-							<td class="header_cell"><a href="" title="">ABOUT</a></td>
+							<td class="header_cell"><a href="index.php?action=login" title=""><?PHP if (array_key_exists('login', $_SESSION)){echo $_SESSION['login'];}else{ echo 'Login';} ?></a></td>
+							<td class="header_cell"><a href="index.php?action=login" title=""><?PHP if (array_key_exists('login', $_SESSION)){}else{ echo 'Register';} ?></a></td>
+							<td class="header_cell"><a href="index.php?action=logout" title=""><?PHP if (array_key_exists('login', $_SESSION)){echo 'Logout';}?></a></td>
 						</tr>
 					</table>
 				</div>

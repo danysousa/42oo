@@ -11,13 +11,13 @@
 				<div id="log_bar">
 					<table border="0">
 						<tr>
-							<td class="header_cell"><a href="index.php?action=login" title="">LOGIN</a></td>
-							<td class="header_cell"><a href="index.php?action=login" title="">REGISTER</a></td>
-							<td class="header_cell"><a href="" title="">ABOUT</a></td>
+							<td class="header_cell"><a href="index.php?action=login" title=""><?PHP if (array_key_exists('login', $_SESSION)){echo $_SESSION['login'];}else{ echo 'Login';} ?></a></td>
+							<td class="header_cell"><a href="index.php?action=login" title=""><?PHP if (array_key_exists('login', $_SESSION)){}else{ echo 'Register';} ?></a></td>
+							<td class="header_cell"><a href="index.php?action=logout" title=""><?PHP if (array_key_exists('login', $_SESSION)){echo 'Logout';}?></a></td>
 						</tr>
 					</table>
 				</div>
-				<a href="index.php?action=home" title="Home"><span id="header_title">[HOME:PAGE]</span></a>
+				<a href="index.php?action=home" title="Home"><span id="header_title">[Welcome:<?PHP if(array_key_exists('login', $_SESSION))echo $_SESSION['login']; else echo 'Guest'; ?>]</span></a>
 				<div id="global_block">
 					<div class="menu_block">
 						<a href="index.php?action=gameMap" title="launch"<span class="menu_block_typo">[LAUNCH]<img class="img_block" src="http://mmorpg-tactics.com/wp-content/uploads/2012/03/warhammer-online-logo-1812d25.png"></span></a>

@@ -50,6 +50,7 @@ $actions = array(
 	'addPlayer' => require __DIR__ . '/controllers/addPlayer.php',
 	'createGame' => require_once __DIR__ . '/controllers/createGame.php',
 	'login' => require __DIR__ . '/controllers/login.php',
+	'logout' => require_once __DIR__.'/controllers/logout.php',
 	'home' => require_once __DIR__ . '/controllers/home.php',
 	'profile' => require_once __DIR__.'/controllers/profile.php',
 	'lobby' => require_once __DIR__.'/controllers/lobby.php',
