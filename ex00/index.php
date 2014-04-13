@@ -42,6 +42,8 @@ function app() {
 	return $GLOBALS['app'];
 }
 
+if (!$app->get('session')->get('login') && $_GET['action'] != 'login')
+	header('Location: ./index.php?action=login');
 /*
  * Setup controllers.
  *
