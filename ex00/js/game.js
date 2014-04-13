@@ -32,9 +32,9 @@
 
 	function getDirIndex(dir) {
 		var dirs = {
-			'west': 0,
+			'west': 2,
 			'south': 1,
-			'east': 2,
+			'east': 0,
 			'north': 3
 		};
 		return dirs[dir];
@@ -179,6 +179,7 @@
 					alert('Your ship was locked :(');
 					return;
 				}
+				drawObjects($scope.game.ships);
 			});
 		}
 

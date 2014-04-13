@@ -2,9 +2,9 @@
 
 abstract class MapObject extends Base
 {
-	const DIRECTION_WEST  = 0;
+	const DIRECTION_WEST  = 2;
 	const DIRECTION_SOUTH = 1;
-	const DIRECTION_EAST  = 2;
+	const DIRECTION_EAST  = 0;
 	const DIRECTION_NORTH = 3;
 
 	protected $x;
@@ -71,7 +71,7 @@ abstract class MapObject extends Base
 		$power = $weapon->getPower();
 		$shield = $other->getShield();
 		$pv = $other->getPv();
-		while ($power > 0) 
+		while ($power > 0)
 		{
 			if ($shield > 0)
 				$shield--;
