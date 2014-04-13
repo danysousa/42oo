@@ -2,10 +2,10 @@
 -- version 4.1.9
 -- http://www.phpmyadmin.net
 --
--- Host: localhost:3306
--- Generation Time: Apr 12, 2014 at 08:12 AM
--- Server version: 5.5.36
--- PHP Version: 5.4.26
+-- Client :  localhost:3306
+-- Généré le :  Dim 13 Avril 2014 à 05:45
+-- Version du serveur :  5.5.36
+-- Version de PHP :  5.4.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,13 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `rush`
+-- Base de données :  `rush`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `flotte`
+-- Structure de la table `flotte`
 --
 
 CREATE TABLE IF NOT EXISTS `flotte` (
@@ -32,10 +32,19 @@ CREATE TABLE IF NOT EXISTS `flotte` (
   `id_vaisseau` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Contenu de la table `flotte`
+--
+
+INSERT INTO `flotte` (`id_user`, `id_partie`, `id_vaisseau`) VALUES
+(2, 6, 1),
+(2, 6, 2),
+(2, 6, 3);
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `partie`
+-- Structure de la table `partie`
 --
 
 CREATE TABLE IF NOT EXISTS `partie` (
@@ -48,12 +57,21 @@ CREATE TABLE IF NOT EXISTS `partie` (
   `name` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
+
+--
+-- Contenu de la table `partie`
+--
+
+INSERT INTO `partie` (`id`, `pts`, `id_admin`, `id_current_player`, `start`, `max_player`, `name`) VALUES
+(6, 500, 2, 2, 0, 4, 'test'),
+(7, 500, 2, 2, 0, 4, 'megapartie'),
+(9, 500, 2, 2, 0, 4, 'PRout');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- Structure de la table `user`
 --
 
 CREATE TABLE IF NOT EXISTS `user` (
@@ -63,14 +81,20 @@ CREATE TABLE IF NOT EXISTS `user` (
   `id_partie` int(11) NOT NULL,
   `score` int(11) NOT NULL,
   `defaite` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `name` (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+
+--
+-- Contenu de la table `user`
+--
+
+INSERT INTO `user` (`id`, `name`, `pwd`, `id_partie`, `score`, `defaite`) VALUES
+(2, 'dsousa', 'c387b89fe8d1f3505d3342fc6bab16a35becc6f41a5e63e92461c516897c0e4c268ca1704707af3939d1577e8d46ff567009e94d19de8033a1b2e3dc8eb6b751', 6, 0, 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `vaisseau`
+-- Structure de la table `vaisseau`
 --
 
 CREATE TABLE IF NOT EXISTS `vaisseau` (
@@ -79,10 +103,20 @@ CREATE TABLE IF NOT EXISTS `vaisseau` (
   `posX` int(11) NOT NULL,
   `posY` int(11) NOT NULL,
   `pv` int(11) NOT NULL,
-  `portee` int(11) NOT NULL,
+  `portee` enum('courte','moyenne','longue') NOT NULL,
   `mobile` int(11) NOT NULL,
+  `rot` enum('north','east','south','west') NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+
+--
+-- Contenu de la table `vaisseau`
+--
+
+INSERT INTO `vaisseau` (`id`, `class`, `posX`, `posY`, `pv`, `portee`, `mobile`, `rot`) VALUES
+(1, 'HonorableDuty', 0, 0, 5, 'courte', 1, 'north'),
+(2, 'SwordOfAbsolution', 0, 0, 4, 'courte', 1, 'north'),
+(3, 'HonorableDuty', 0, 0, 5, 'courte', 1, 'north');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
