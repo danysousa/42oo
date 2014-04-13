@@ -2,8 +2,8 @@
 
 class PurpleDeath extends Ship
 {
-	const W = 15;
-	const H = 15;
+	const W = 8;
+	const H = 13;
 	const SPEED = 11;
 	
 	public function __construct($x, $y, Player $player)

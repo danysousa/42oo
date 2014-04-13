@@ -2,8 +2,8 @@
 
 class SwordOfAbsolution extends Ship
 {
-	const W = 10;
-	const H = 15;
+	const W = 8;
+	const H = 10;
 	const SPEED = 15;
 	const SPRITE = "/ex00/img/SwordOfAbsolution_{{dir}}.png";
 	

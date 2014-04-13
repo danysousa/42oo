@@ -2,7 +2,7 @@
 
 class BlueLeaf extends Ship
 {
-	const W = 12;
+	const W = 7;
 	const H = 12;
 	const SPEED = 18;
 	

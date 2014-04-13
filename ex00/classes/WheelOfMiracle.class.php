@@ -2,8 +2,8 @@
 
 class WheelOfMiracle extends Ship
 {
-	const W = 15;
-	const H = 15;
+	const W = 13;
+	const H = 13;
 	const SPEED = 6;
 	const SPRITE = "/ex00/img/WheelOfMiracle_{{dir}}.png";
 	
