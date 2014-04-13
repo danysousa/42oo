@@ -38,6 +38,38 @@
 	color: #52AEF3;
 }
 
+button
+{
+	margin-bottom: 5px;
+	width: 80px;
+	height: 20px;
+	display: inline-block;
+	background-color: black;
+	border-right: 1px #52AEF3 solid;
+	border-left: 1px #52AEF3 solid;
+	border-top: 0px;
+	border-bottom: 0px;
+	outline: none;
+	color: #52AEF3;
+}
+
+button:hover
+{
+	margin-bottom: 5px;
+	top: 5px;
+	margin: 0px;
+	width: 80px;
+	height: 20px;
+	display: inline-block;
+	background-color: black;
+	border-right: 1px #52AEF3 solid;
+	border-left: 1px #52AEF3 solid;
+	border-top: 0px;
+	border-bottom: 0px;
+	outline: none;
+	color: #F2F2F2;
+}
+
 body
 {
 	background-repeat: no-repeat;
@@ -75,6 +107,31 @@ h2
 	font-family: monospace;
 	font-size: 16px;
 	color: #52AEF3;
+}
+
+h3
+{
+	font-size: 14px;
+	color: #52AEF3;
+	width: 10px;
+	height: 10px;
+	margin: 0px;
+	padding: 0px;
+}
+
+img
+{
+	display: inline-block;
+	float: left;
+	margin: 0px;
+	padding: 0px;
+	width: 140px;
+	height: 100px;
+}
+
+img:hover
+{
+	border-bottom: 1px #52AEF3 solid;
 }
 
 hr
@@ -267,4 +324,26 @@ td .stats_cell
 {
 	margin-left: 20px;
 	margin-right: 20px;
+}
+
+.selected_ship
+{
+	display: inline-block;
+	width: 150px;
+	height: 120px;
+}
+
+.indication
+{
+	color: #52AEF3;
+	font-size: 14px;
+	text-align: center;
+	font-family: monospace;
+}
+
+.container
+{
+	height: 200px;
+	width: 100%;
+	overflow: auto;
 }
