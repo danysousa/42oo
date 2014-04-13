@@ -1,7 +1,7 @@
 <?php
 
 function getGame($gameId) {
-	$ships = app()->get('db')->query(
+	$gameShipsDb = app()->get('db')->query(
 		"SELECT v.id ship_id, v.rot ship_dir, v.class ship_class, v.posX ship_posX, v.posY ship_posY, v.pv ship_pv, v.portee ship_range, v.mobile ship_mobile, u.id user_id, u.name user_name,
 			v.has_allocated ship_has_allocated, v.has_rotated ship_has_rotated, v.has_shooted ship_has_shooted
 		FROM flotte f JOIN vaisseau v
