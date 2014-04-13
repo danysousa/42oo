@@ -4,6 +4,7 @@ class HonorableDuty extends Ship
 {
 	const W = 10;
 	const H = 15;
+	const SPEED = 15;
 
 	public function __construct($x, $y, Player $player)
 	{
@@ -12,7 +13,7 @@ class HonorableDuty extends Ship
 		$h = self::H;
 		$pp = 10;
 		$pv = 5;
-		$speed = 15;
+		$speed = self::SPEED;
 		$inertia = 4;
 		$shield = 0;
 		$sprite = "/ex00/img/HonorableDuty_{{dir}}.png";

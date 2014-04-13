@@ -1,5 +1,7 @@
 <?php
 
+define('GAME_PP', 100);
+
 class App {
 	protected $instances = array();
 

@@ -24,11 +24,11 @@ return function() {
 			&& $_POST['login_password'])
 	{
 		$pwd = hash('whirlpool', $_POST['login_password']);
-		$verif = app()->get('db')->query("SELECT id FROM user WHERE name LIKE ? AND pwd LIKE ?", array($_POST['login_login'], $pwd));
+		$verif = app()->get('db')->queryOne("SELECT id FROM user WHERE name LIKE ? AND pwd LIKE ?", array($_POST['login_login'], $pwd));
 		if ($verif)
 		{
 			app()->get('session')->set('login', $_POST['login_login']);
-			app()->get('session')->set('id_usr', $verif[0]['id']);
+			app()->get('session')->set('id_usr', $verif['id']);
 		}
 	}
 	if (!app()->get('session')->get('login') || !app()->get('session')->get('id_usr'))

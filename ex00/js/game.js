@@ -7,6 +7,8 @@
 		y: canvas.height / 100
 	};
 
+	var MAX_PP = 100;
+
 	function drawGrid(x, y)
 	{
 		var color = "#999999";
@@ -68,6 +70,8 @@
 				if (el.ship_id === id)
 					$scope.selectedShip = el;
 			});
+						console.dir($scope.selectedShip);
+
 		}
 
 		$scope.percentCalc = function(element) {
@@ -75,26 +79,45 @@
 				$scope.movePointsValue = $scope.maxRange - $scope.weaponPointsValue;
 			else
 				$scope.weaponPointsValue = $scope.maxRange - $scope.movePointsValue;
+						console.dir($scope.selectedShip);
+
 		}
 
 		$scope.submitRepartition = function() {
-			$http.post('index.php?action=postTurnSubmitRepartition', {
-				shipId: $scope.selectedShip.ship_id,
-				move: parseInt($scope.movePointsValue) / $scope.maxRange * pp,
-				weapon: parseInt($scope.movePointsValue) / $scope.maxRange * pp
+			console.dir($scope.selectedShip);
+			$http({
+				url: 'index.php?action=postTurnSubmitRepartition',
+				method: "POST",
+				headers: {
+					"Content-Type": "application/x-www-form-urlencoded"
+				},
+				data: {
+					shipId: $scope.selectedShip.ship_id,
+					movePp: parseInt($scope.movePointsValue) / $scope.maxRange * MAX_PP,
+					weaponPp: parseInt($scope.weaponPointsValue) / $scope.maxRange * MAX_PP
+				}
 			}).success(function(data) {
+				console.dir($scope.selectedShip);
 				$scope.repartitionSubmitted = true;
 			});
 		}
 
 		$scope.rotate = function(direction) {
-			var dirs = {'west': 0, 'south': 1, 'east': 2, 'north': 3};
+			var dirs = {'west': 1, 'south': 1, 'east': 1, 'north': 1};
 			if (dirs[direction]) {
-				$http.post('index.php?action=postTurnSubmitRotation', {
-					direction: dir
+				$http({
+					url: 'index.php?action=postTurnSubmitRotation',
+					method: "POST",
+					headers: {
+						"Content-Type": "application/x-www-form-urlencoded"
+					},
+					data: {
+						direction: direction
+					}
 				}).success(function(data) {
 					$scope.selectedShip.ship_dir = direction;
 					$scope.rotationDone = true;
+					console.dir($scope.selectedShip);
 				});
 			} else {
 				$scope.rotationDone = true;
@@ -102,9 +125,9 @@
 		}
 
 		$scope.moveForward = function() {
-			$scope.moveLocked = true;
-			$http.post('index.php?action=postTurnSubmitMove', {
-				direction: dir
+			$http({
+				url: 'index.php?action=postTurnSubmitMove',
+				method: "POST"
 			}).success(function(data) {
 				// if the ship was out of bounds and died
 				if (data.shipDied) {
@@ -117,8 +140,9 @@
 					return;
 				}
 				$scope.selectedShip.ship_posX = data.x;
-				$scope.selectedShip.ship_posX = data.y;
-				$scope.moveLocked = false;
+				$scope.selectedShip.ship_posY = data.y;
+				$scope.moved = true;
+				console.dir($scope.selectedShip);
 			});
 		}
 

@@ -45,14 +45,14 @@ return function() {
 					0,
 					0
 				));
-			$id = app()->get('db')->query("SELECT id FROM vaisseau ORDER BY id DESC LIMIT 1", array());
-			$partie = app()->get('db')->query("SELECT id_partie FROM user WHERE id LIKE ?", array(
+			$id = app()->get('db')->queryOne("SELECT id FROM vaisseau ORDER BY id DESC LIMIT 1", array());
+			$partie = app()->get('db')->queryOne("SELECT id_partie FROM user WHERE id LIKE ?", array(
 				app()->get('session')->get('id_usr')
 			));
 			app()->get('db')->query("INSERT INTO flotte (id_user, id_partie, id_vaisseau) VALUES(?, ?, ?)", array(
 				app()->get('session')->get('id_usr'),
-				$partie[0]['id_partie'],
-				$id[0]['id']
+				$partie['id_partie'],
+				$id['id']
 			));
 		}
 

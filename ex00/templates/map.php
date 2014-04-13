@@ -31,19 +31,18 @@
 						<div ng-controller="ActionFormCtrl">
 							<div ng-show="user && game">
 								<h2>Choose the ship to use this turn</h2>
-								<div value="{{ s.ship_id }}" class="ship" ng-repeat="s in game.ships | filter: { user_id: user.id }" ng-click="selectShip(s.ship_id)" ng-class="{shipSelected: s === selectedShip}">
+								<div ng-show="!selectedShip" value="{{ s.ship_id }}" class="ship" ng-repeat="s in game.ships | filter: { user_id: user.id }" ng-click="selectShip(s.ship_id)" ng-class="{shipSelected: s === selectedShip}">
 									<h3>{{ s.ship_class }} [ {{ s.ship_posX }}, {{ s.ship_posY }}]</h3>
 									<img ng-src="img/{{ s.ship_class }}_0.png" alt="">
 								</div>
 								<div ng-show="selectedShip && !repartitionSubmitted">
-									<input type="hidden" value="{{selectShip.ship_id}}">
 									<h3>Weapon points</h3>
 									<input type="range" name="valueRepartitionWeapons" ng-model="weaponPointsValue" ng-change="percentCalc('valueRepartitionWeapons')" value="{{maxRange / 2}}" min="1" max="{{maxRange}}"><br>
 									<h3>Move points</h3>
 									<input type="range" name="valueRepartitionMove" ng-model="movePointsValue" ng-change="percentCalc('valueRepartitionMove')" value="{{maxRange / 2}}" min="1" max="{{maxRange}}"><br>
 									<button ng-click="submitRepartition()">Go !</button>
 								</div>
-								<div ng-show="repartitionSubmitted">
+								<div ng-show="repartitionSubmitted && !rotationDone">
 									<h3>Rotate ?</h3>
 									<button ng-click="rotate('south')">Turn south</button><br>
 									<button ng-click="rotate('north')">Turn north</button><br>
@@ -52,8 +51,8 @@
 
 									<button ng-click="rotate('none')">Don't rotate</button>
 								</div>
-								<div ng-show="rotationDone">
-									Now, you can move your ship ! :)
+								<div ng-show="rotationDone && !moved">
+									<button ng-click="moveForward()">Move forward</button>
 								</div>
 								<canvas id="myCanvas" width="1600" height="1000" style="border:1px solid #000000; background: white"></canvas>
 							</div>

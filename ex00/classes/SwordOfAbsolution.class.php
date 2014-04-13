@@ -4,6 +4,7 @@ class SwordOfAbsolution extends Ship
 {
 	const W = 10;
 	const H = 15;
+	const SPEED = 15;
 	
 	public function __construct($x, $y, Player $player)
 	{
@@ -12,7 +13,7 @@ class SwordOfAbsolution extends Ship
 		$h = self::H;
 		$pp = 10;
 		$pv = 4;
-		$speed = 18;
+		$speed = self::SPEED;
 		$inertia = 3;
 		$shield = 0;
 		$sprite = "/ex00/img/SwordOfAbsolution_{{dir}}.png";

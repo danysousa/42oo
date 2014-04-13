@@ -2,10 +2,10 @@
 -- version 4.1.9
 -- http://www.phpmyadmin.net
 --
--- Client :  localhost:3306
--- Généré le :  Dim 13 Avril 2014 à 06:09
--- Version du serveur :  5.5.36
--- Version de PHP :  5.4.26
+-- Host: localhost:3306
+-- Generation Time: Apr 13, 2014 at 06:40 AM
+-- Server version: 5.5.36
+-- PHP Version: 5.4.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,13 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Base de données :  `rush`
+-- Database: `rush`
 --
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `flotte`
+-- Table structure for table `flotte`
 --
 
 CREATE TABLE IF NOT EXISTS `flotte` (
@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS `flotte` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Contenu de la table `flotte`
+-- Dumping data for table `flotte`
 --
 
 INSERT INTO `flotte` (`id_user`, `id_partie`, `id_vaisseau`) VALUES
@@ -46,7 +46,7 @@ INSERT INTO `flotte` (`id_user`, `id_partie`, `id_vaisseau`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `partie`
+-- Table structure for table `partie`
 --
 
 CREATE TABLE IF NOT EXISTS `partie` (
@@ -62,7 +62,7 @@ CREATE TABLE IF NOT EXISTS `partie` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
 
 --
--- Contenu de la table `partie`
+-- Dumping data for table `partie`
 --
 
 INSERT INTO `partie` (`id`, `pts`, `id_admin`, `id_current_player`, `start`, `max_player`, `name`) VALUES
@@ -73,7 +73,7 @@ INSERT INTO `partie` (`id`, `pts`, `id_admin`, `id_current_player`, `start`, `ma
 -- --------------------------------------------------------
 
 --
--- Structure de la table `user`
+-- Table structure for table `user`
 --
 
 CREATE TABLE IF NOT EXISTS `user` (
@@ -88,7 +88,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
--- Contenu de la table `user`
+-- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`id`, `name`, `pwd`, `id_partie`, `score`, `defaite`, `id_vaisseau`) VALUES
@@ -97,7 +97,7 @@ INSERT INTO `user` (`id`, `name`, `pwd`, `id_partie`, `score`, `defaite`, `id_va
 -- --------------------------------------------------------
 
 --
--- Structure de la table `vaisseau`
+-- Table structure for table `vaisseau`
 --
 
 CREATE TABLE IF NOT EXISTS `vaisseau` (
@@ -113,19 +113,23 @@ CREATE TABLE IF NOT EXISTS `vaisseau` (
   `pp_gun` int(11) NOT NULL,
   `pp_speed` int(11) NOT NULL,
   `pp_total` int(11) NOT NULL,
+  `pp_move` int(11) NOT NULL,
+  `has_allocated` int(11) NOT NULL,
+  `has_rotated` int(11) NOT NULL,
+  `has_shooted` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
--- Contenu de la table `vaisseau`
+-- Dumping data for table `vaisseau`
 --
 
-INSERT INTO `vaisseau` (`id`, `class`, `posX`, `posY`, `pv`, `portee`, `mobile`, `rot`, `pp_shield`, `pp_gun`, `pp_speed`, `pp_total`) VALUES
-(1, 'HonorableDuty', 0, 0, 5, 'courte', 1, 'north', 0, 0, 0, 0),
-(2, 'SwordOfAbsolution', 0, 0, 4, 'courte', 1, 'north', 0, 0, 0, 0),
-(3, 'HonorableDuty', 0, 0, 5, 'courte', 1, 'north', 0, 0, 0, 0),
-(4, 'HonorableDuty', 0, 0, 5, 'courte', 1, 'north', 0, 0, 0, 0),
-(5, 'SwordOfAbsolution', 0, 0, 4, 'courte', 1, 'north', 0, 0, 0, 0);
+INSERT INTO `vaisseau` (`id`, `class`, `posX`, `posY`, `pv`, `portee`, `mobile`, `rot`, `pp_shield`, `pp_gun`, `pp_speed`, `pp_total`, `pp_move`, `has_allocated`, `has_rotated`, `has_shooted`) VALUES
+(1, 'HonorableDuty', 0, 0, 5, 'courte', 1, 'north', 0, 0, 0, 0, 0, 0, 0, 0),
+(2, 'SwordOfAbsolution', 0, 0, 4, 'courte', 1, 'north', 0, 0, 0, 0, 0, 0, 0, 0),
+(3, 'HonorableDuty', 0, 0, 5, 'courte', 1, 'north', 0, 0, 0, 0, 0, 0, 0, 0),
+(4, 'HonorableDuty', 0, 0, 5, 'courte', 1, 'north', 0, 0, 0, 0, 0, 0, 0, 0),
+(5, 'SwordOfAbsolution', 0, 0, 4, 'courte', 1, 'north', 0, 0, 0, 0, 0, 0, 0, 0);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
