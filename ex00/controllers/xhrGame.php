@@ -30,7 +30,8 @@ return function() {
 		FROM flotte f JOIN vaisseau v
 		ON f.id_vaisseau = v.id JOIN user u
 		ON u.id = f.id_user JOIN partie p
-		ON p.id = ?", [
+		ON p.id = ? WHERE f.id_partie = ?", [
+		$game['id'],
 		$game['id']
 	]);
 

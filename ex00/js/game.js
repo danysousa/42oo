@@ -59,7 +59,7 @@
 			ctx.beginPath();
 			ctx.rect(x, y, w, h);
 			ctx.lineWidth = 1;
-			ctx.strokeStyle = el.user_id === user.id ? 'green' : 'red';
+			ctx.strokeStyle = el.user_id === user.id ? '#52aef3' : 'red';
 			ctx.stroke();
 			// ships that are alive show their sprite
 			if (el.ship_pv > 0) {
