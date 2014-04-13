@@ -55,7 +55,7 @@
 								<div ng-show="rotationDone">
 									
 								</div>
-								<canvas id="myCanvas" width="1600" height="1000" style="border:1px solid #000000; background: white"></canvas>
+								<canvas id="myCanvas" width="1600" height="1000" style="border:1px solid #000000; background: #141A1F"></canvas>
 							</div>
 
 							<div ng-show="!user || !game">
