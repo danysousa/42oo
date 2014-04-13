@@ -144,13 +144,9 @@
 				method: "POST"
 			}).success(function(data) {
 				// if the ship was out of bounds and died
-				if (data.shipDied) {
-					alert('Your ship just died... :(');
-					return;
-				}
 				// if the ship hit another ship, lock it !
-				if (data.shipLocked) {
-					alert('Your ship was locked :(');
+				if (data === 'atomic') {
+					alert('ATOMIC BOMB ! BOUYAA!');
 					return;
 				}
 				$scope.selectedShip.ship_posX = data.x;
