@@ -50,14 +50,18 @@
 
 	var game = angular.module('gameApp', []);
  
-	game.controller('ActionFormCtrl', function ($http, $scope)
-	{
+	game.controller('ActionFormCtrl', function ($http, $scope) {
 		$http.get('index.php?action=xhrUser').success(function(user) {
 			$http.get('index.php?action=xhrGame').success(function(game) {
 				$scope.user = user;
 				$scope.game = game;
 			});
 		});
+
+		// the maximum range of the slider, SHOULD BE CHANGED TO THE NUMBER OF PP
+		$scope.maxRange = 800;
+		// for the moment, dont accept moves
+		$scope.moveLocked = true;
 
 		$scope.selectShip = function(id) {
 			$scope.game.ships.forEach(function(el) {
@@ -66,17 +70,56 @@
 			});
 		}
 
-		$scope.percentCalc = function(element)
-		{
-			var base = 50;
+		$scope.percentCalc = function(element) {
 			if (element === 'valueRepartitionWeapons')
-			{
-				$scope.movePointsValue = 400 - $scope.weaponPointsValue;
-			}
+				$scope.movePointsValue = $scope.maxRange - $scope.weaponPointsValue;
 			else
-			{
-				$scope.weaponPointsValue = 400 - $scope.movePointsValue;
+				$scope.weaponPointsValue = $scope.maxRange - $scope.movePointsValue;
+		}
+
+		$scope.submitRepartition = function() {
+			var pp = 15;
+			$http.post('index.php?action=postTurnSubmitRepartition', {
+				shipId: $scope.selectedShip.ship_id,
+				move: parseInt($scope.movePointsValue) / $scope.maxRange * pp,
+				weapon: parseInt($scope.movePointsValue) / $scope.maxRange * pp
+			}).success(function(data) {
+				$scope.repartitionSubmitted = true;
+			});
+		}
+
+		$scope.rotate = function(direction) {
+			var dirs = {'west': 0, 'south': 1, 'east': 2, 'north': 3};
+			if (dirs[direction]) {
+				$http.post('index.php?action=postTurnSubmitRotation', {
+					direction: dir
+				}).success(function(data) {
+					$scope.selectedShip.ship_dir = direction;
+					$scope.rotationDone = true;
+				});
+			} else {
+				$scope.rotationDone = true;
 			}
+		}
+
+		$scope.moveForward = function() {
+			$http.post('index.php?action=postTurnSubmitMove', {
+				direction: dir
+			}).success(function(data) {
+				// if the ship was out of bounds and died
+				if (data.shipDied) {
+					alert('Your ship just died... :(');
+					return;
+				}
+				// if the ship hit another ship, lock it !
+				if (data.shipLocked) {
+					alert('Your ship was locked :(');
+					return;
+				}
+				$scope.selectedShip.ship_posX = data.x;
+				$scope.selectedShip.ship_posX = data.y;
+				$scope.moveLocked = false;
+			});
 		}
 
 		/*
