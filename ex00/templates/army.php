@@ -18,6 +18,8 @@
 		$BloodPuller = $instance->toJson();
 		$instance = new PurpleDeath(0, 0, $player);
 		$PurpleDeath = $instance->toJson();
+		$instance = new WheelOfMiracle(0, 0, $player);
+		$WheelOfMiracle = $instance->toJson();
 	?>
 </head>
 <body>
@@ -43,6 +45,7 @@
 			<option>BlueLeaf</option>
 			<option>BloodPuller</option>
 			<option>PurpleDeath</option>
+			<option>WheelOfMiracle</option>
 		</select>
 		<div class="HonorableDuty">
 		<?php
@@ -92,6 +95,16 @@
 			echo 'Inertia: '.$PurpleDeath['inertia'].'<br />';
 			echo 'LifePoints: '.$PurpleDeath['pv'].'<br />';
 			echo 'ShieldPoints: '.$PurpleDeath['shield'].'<br />';
+		?>
+		</div>
+		<div class="WheelOfMiracle">
+		<?php
+			echo '<img style="margin-bottom:20px;" src="'.str_replace('{{dir}}', '0', $WheelOfMiracle['sprite']).'">'.'<br />';
+			echo 'Name: '.$WheelOfMiracle['name'].'<br />';
+			echo 'Speed: '.$WheelOfMiracle['speed'].'<br />';
+			echo 'Inertia: '.$WheelOfMiracle['inertia'].'<br />';
+			echo 'LifePoints: '.$WheelOfMiracle['pv'].'<br />';
+			echo 'ShieldPoints: '.$WheelOfMiracle['shield'].'<br />';
 		?>
 		</div>
 	</div>
@@ -103,6 +116,7 @@
 			<option>BlueLeaf</option>
 			<option>BloodPuller</option>
 			<option>PurpleDeath</option>
+			<option>WheelOfMiracle</option>
 		</select>
 		<div class="HonorableDuty">
 		<?php
@@ -152,6 +166,16 @@
 			echo 'Inertia: '.$PurpleDeath['inertia'].'<br />';
 			echo 'LifePoints: '.$PurpleDeath['pv'].'<br />';
 			echo 'ShieldPoints: '.$PurpleDeath['shield'].'<br />';
+		?>
+		</div>
+		<div class="WheelOfMiracle">
+		<?php
+			echo '<img style="margin-bottom:20px;" src="'.str_replace('{{dir}}', '0', $WheelOfMiracle['sprite']).'">'.'<br />';
+			echo 'Name: '.$WheelOfMiracle['name'].'<br />';
+			echo 'Speed: '.$WheelOfMiracle['speed'].'<br />';
+			echo 'Inertia: '.$WheelOfMiracle['inertia'].'<br />';
+			echo 'LifePoints: '.$WheelOfMiracle['pv'].'<br />';
+			echo 'ShieldPoints: '.$WheelOfMiracle['shield'].'<br />';
 		?>
 		</div>
 	</div>
@@ -163,6 +187,7 @@
 			<option>BlueLeaf</option>
 			<option>BloodPuller</option>
 			<option>PurpleDeath</option>
+			<option>WheelOfMiracle</option>
 		</select>
 		<div class="HonorableDuty">
 		<?php
@@ -212,6 +237,16 @@
 			echo 'Inertia: '.$PurpleDeath['inertia'].'<br />';
 			echo 'LifePoints: '.$PurpleDeath['pv'].'<br />';
 			echo 'ShieldPoints: '.$PurpleDeath['shield'].'<br />';
+		?>
+		</div>
+		<div class="WheelOfMiracle">
+		<?php
+			echo '<img style="margin-bottom:20px;" src="'.str_replace('{{dir}}', '0', $WheelOfMiracle['sprite']).'">'.'<br />';
+			echo 'Name: '.$WheelOfMiracle['name'].'<br />';
+			echo 'Speed: '.$WheelOfMiracle['speed'].'<br />';
+			echo 'Inertia: '.$WheelOfMiracle['inertia'].'<br />';
+			echo 'LifePoints: '.$WheelOfMiracle['pv'].'<br />';
+			echo 'ShieldPoints: '.$WheelOfMiracle['shield'].'<br />';
 		?>
 		</div>
 	</div>

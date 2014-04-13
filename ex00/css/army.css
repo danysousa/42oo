@@ -156,6 +156,18 @@ input
 	background-image: url('../img/Body_Pattern.png');
 }
 
+.WheelOfMiracle
+{
+	margin-top: 20px;
+	margin-bottom: 20px;
+	display: block;
+	position: relative;
+	width: 220px;
+	height: 220px;
+	color: #52AEF3;
+	background-image: url('../img/Body_Pattern.png');
+}
+
 .float_img
 {
 	position: absolute;
