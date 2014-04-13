@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Create Army</title>
+	<title>Awesome Starships Battles II</title>
 	<meta charset="utf8">
 	<LINK href="css/army.css" rel="stylesheet" type="text/css">
 	<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
@@ -12,6 +12,14 @@
 		$HonorableDuty = $instance->toJson();
 		$instance = new SwordOfAbsolution(0, 0, $player);
 		$SwordOfAbsolution = $instance->toJson();
+		$instance = new BlueLeaf(0, 0, $player);
+		$BlueLeaf = $instance->toJson();
+		$instance = new BloodPuller(0, 0, $player);
+		$BloodPuller = $instance->toJson();
+		$instance = new PurpleDeath(0, 0, $player);
+		$PurpleDeath = $instance->toJson();
+		$instance = new WheelOfMiracle(0, 0, $player);
+		$WheelOfMiracle = $instance->toJson();
 	?>
 </head>
 <body>
@@ -34,6 +42,10 @@
 			<option>-- No army ! I'm a warrior --</option>
 			<option>HonorableDuty</option>
 			<option>SwordOfAbsolution</option>
+			<option>BlueLeaf</option>
+			<option>BloodPuller</option>
+			<option>PurpleDeath</option>
+			<option>WheelOfMiracle</option>
 		</select>
 		<div class="HonorableDuty">
 		<?php
@@ -53,6 +65,46 @@
 			echo 'Inertia: '.$SwordOfAbsolution['inertia'].'<br />';
 			echo 'LifePoints: '.$SwordOfAbsolution['pv'].'<br />';
 			echo 'ShieldPoints: '.$SwordOfAbsolution['shield'].'<br />';
+		?>
+		</div>
+		<div class="BlueLeaf">
+		<?php
+			echo '<img style="margin-bottom:20px;" src="'.str_replace('{{dir}}', '0', $BlueLeaf['sprite']).'">'.'<br />';
+			echo 'Name: '.$BlueLeaf['name'].'<br />';
+			echo 'Speed: '.$BlueLeaf['speed'].'<br />';
+			echo 'Inertia: '.$BlueLeaf['inertia'].'<br />';
+			echo 'LifePoints: '.$BlueLeaf['pv'].'<br />';
+			echo 'ShieldPoints: '.$BlueLeaf['shield'].'<br />';
+		?>
+		</div>
+		<div class="BloodPuller">
+		<?php
+			echo '<img style="margin-bottom:20px;" src="'.str_replace('{{dir}}', '0', $BloodPuller['sprite']).'">'.'<br />';
+			echo 'Name: '.$BloodPuller['name'].'<br />';
+			echo 'Speed: '.$BloodPuller['speed'].'<br />';
+			echo 'Inertia: '.$BloodPuller['inertia'].'<br />';
+			echo 'LifePoints: '.$BloodPuller['pv'].'<br />';
+			echo 'ShieldPoints: '.$BloodPuller['shield'].'<br />';
+		?>
+		</div>
+		<div class="PurpleDeath">
+		<?php
+			echo '<img style="margin-bottom:20px;" src="'.str_replace('{{dir}}', '0', $PurpleDeath['sprite']).'">'.'<br />';
+			echo 'Name: '.$PurpleDeath['name'].'<br />';
+			echo 'Speed: '.$PurpleDeath['speed'].'<br />';
+			echo 'Inertia: '.$PurpleDeath['inertia'].'<br />';
+			echo 'LifePoints: '.$PurpleDeath['pv'].'<br />';
+			echo 'ShieldPoints: '.$PurpleDeath['shield'].'<br />';
+		?>
+		</div>
+		<div class="WheelOfMiracle">
+		<?php
+			echo '<img style="margin-bottom:20px;" src="'.str_replace('{{dir}}', '0', $WheelOfMiracle['sprite']).'">'.'<br />';
+			echo 'Name: '.$WheelOfMiracle['name'].'<br />';
+			echo 'Speed: '.$WheelOfMiracle['speed'].'<br />';
+			echo 'Inertia: '.$WheelOfMiracle['inertia'].'<br />';
+			echo 'LifePoints: '.$WheelOfMiracle['pv'].'<br />';
+			echo 'ShieldPoints: '.$WheelOfMiracle['shield'].'<br />';
 		?>
 		</div>
 	</div>
@@ -61,6 +113,10 @@
 			<option>-- No army ! I'm a warrior --</option>
 			<option>HonorableDuty</option>
 			<option>SwordOfAbsolution</option>
+			<option>BlueLeaf</option>
+			<option>BloodPuller</option>
+			<option>PurpleDeath</option>
+			<option>WheelOfMiracle</option>
 		</select>
 		<div class="HonorableDuty">
 		<?php
@@ -80,6 +136,46 @@
 			echo 'Inertia: '.$SwordOfAbsolution['inertia'].'<br />';
 			echo 'LifePoints: '.$SwordOfAbsolution['pv'].'<br />';
 			echo 'ShieldPoints: '.$SwordOfAbsolution['shield'].'<br />';
+		?>
+		</div>
+		<div class="BlueLeaf">
+		<?php
+			echo '<img style="margin-bottom:20px;" src="'.str_replace('{{dir}}', '0', $BlueLeaf['sprite']).'">'.'<br />';
+			echo 'Name: '.$BlueLeaf['name'].'<br />';
+			echo 'Speed: '.$BlueLeaf['speed'].'<br />';
+			echo 'Inertia: '.$BlueLeaf['inertia'].'<br />';
+			echo 'LifePoints: '.$BlueLeaf['pv'].'<br />';
+			echo 'ShieldPoints: '.$BlueLeaf['shield'].'<br />';
+		?>
+		</div>
+		<div class="BloodPuller">
+		<?php
+			echo '<img style="margin-bottom:20px;" src="'.str_replace('{{dir}}', '0', $BloodPuller['sprite']).'">'.'<br />';
+			echo 'Name: '.$BloodPuller['name'].'<br />';
+			echo 'Speed: '.$BloodPuller['speed'].'<br />';
+			echo 'Inertia: '.$BloodPuller['inertia'].'<br />';
+			echo 'LifePoints: '.$BloodPuller['pv'].'<br />';
+			echo 'ShieldPoints: '.$BloodPuller['shield'].'<br />';
+		?>
+		</div>
+		<div class="PurpleDeath">
+		<?php
+			echo '<img style="margin-bottom:20px;" src="'.str_replace('{{dir}}', '0', $PurpleDeath['sprite']).'">'.'<br />';
+			echo 'Name: '.$PurpleDeath['name'].'<br />';
+			echo 'Speed: '.$PurpleDeath['speed'].'<br />';
+			echo 'Inertia: '.$PurpleDeath['inertia'].'<br />';
+			echo 'LifePoints: '.$PurpleDeath['pv'].'<br />';
+			echo 'ShieldPoints: '.$PurpleDeath['shield'].'<br />';
+		?>
+		</div>
+		<div class="WheelOfMiracle">
+		<?php
+			echo '<img style="margin-bottom:20px;" src="'.str_replace('{{dir}}', '0', $WheelOfMiracle['sprite']).'">'.'<br />';
+			echo 'Name: '.$WheelOfMiracle['name'].'<br />';
+			echo 'Speed: '.$WheelOfMiracle['speed'].'<br />';
+			echo 'Inertia: '.$WheelOfMiracle['inertia'].'<br />';
+			echo 'LifePoints: '.$WheelOfMiracle['pv'].'<br />';
+			echo 'ShieldPoints: '.$WheelOfMiracle['shield'].'<br />';
 		?>
 		</div>
 	</div>
@@ -88,6 +184,10 @@
 			<option>-- No army ! I'm a warrior --</option>
 			<option>HonorableDuty</option>
 			<option>SwordOfAbsolution</option>
+			<option>BlueLeaf</option>
+			<option>BloodPuller</option>
+			<option>PurpleDeath</option>
+			<option>WheelOfMiracle</option>
 		</select>
 		<div class="HonorableDuty">
 		<?php
@@ -107,6 +207,46 @@
 			echo 'Inertia: '.$SwordOfAbsolution['inertia'].'<br />';
 			echo 'LifePoints: '.$SwordOfAbsolution['pv'].'<br />';
 			echo 'ShieldPoints: '.$SwordOfAbsolution['shield'].'<br />';
+		?>
+		</div>
+		<div class="BlueLeaf">
+		<?php
+			echo '<img style="margin-bottom:20px;" src="'.str_replace('{{dir}}', '0', $BlueLeaf['sprite']).'">'.'<br />';
+			echo 'Name: '.$BlueLeaf['name'].'<br />';
+			echo 'Speed: '.$BlueLeaf['speed'].'<br />';
+			echo 'Inertia: '.$BlueLeaf['inertia'].'<br />';
+			echo 'LifePoints: '.$BlueLeaf['pv'].'<br />';
+			echo 'ShieldPoints: '.$BlueLeaf['shield'].'<br />';
+		?>
+		</div>
+		<div class="BloodPuller">
+		<?php
+			echo '<img style="margin-bottom:20px;" src="'.str_replace('{{dir}}', '0', $BloodPuller['sprite']).'">'.'<br />';
+			echo 'Name: '.$BloodPuller['name'].'<br />';
+			echo 'Speed: '.$BloodPuller['speed'].'<br />';
+			echo 'Inertia: '.$BloodPuller['inertia'].'<br />';
+			echo 'LifePoints: '.$BloodPuller['pv'].'<br />';
+			echo 'ShieldPoints: '.$BloodPuller['shield'].'<br />';
+		?>
+		</div>
+		<div class="PurpleDeath">
+		<?php
+			echo '<img style="margin-bottom:20px;" src="'.str_replace('{{dir}}', '0', $PurpleDeath['sprite']).'">'.'<br />';
+			echo 'Name: '.$PurpleDeath['name'].'<br />';
+			echo 'Speed: '.$PurpleDeath['speed'].'<br />';
+			echo 'Inertia: '.$PurpleDeath['inertia'].'<br />';
+			echo 'LifePoints: '.$PurpleDeath['pv'].'<br />';
+			echo 'ShieldPoints: '.$PurpleDeath['shield'].'<br />';
+		?>
+		</div>
+		<div class="WheelOfMiracle">
+		<?php
+			echo '<img style="margin-bottom:20px;" src="'.str_replace('{{dir}}', '0', $WheelOfMiracle['sprite']).'">'.'<br />';
+			echo 'Name: '.$WheelOfMiracle['name'].'<br />';
+			echo 'Speed: '.$WheelOfMiracle['speed'].'<br />';
+			echo 'Inertia: '.$WheelOfMiracle['inertia'].'<br />';
+			echo 'LifePoints: '.$WheelOfMiracle['pv'].'<br />';
+			echo 'ShieldPoints: '.$WheelOfMiracle['shield'].'<br />';
 		?>
 		</div>
 	</div>

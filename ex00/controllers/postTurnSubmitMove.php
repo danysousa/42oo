@@ -39,6 +39,8 @@ return function() {
 		die('Has not rotated.');
 	}
 
+	$gameInstance = getGame($game['id']);
+
 	header('content-type: application/json');
 
 	// do move
@@ -46,27 +48,58 @@ return function() {
 	{
 		$y = $ship['posY'];
 		$y = $ship['rot'] == 'north' ? $y - ($ship['class']::SPEED + $ship['pp_speed']) : $y + ($ship['class']::SPEED + $ship['pp_speed']);
-		app()->get('db')->query("UPDATE vaisseau SET posY = ? WHERE id = ?", [
+
+		// check for collisions
+		$shipInstance = new $ship['class']($ship['posX'], $y, new Player('name', Player::ACTIVE, 'sessionid'));
+
+		// no collision, go ahead and move the ship
+		// check bounds in X
+		if ($shipInstance->getX() >= 0 && $shipInstance->getX() < 150
+			// check bounds in Y
+			&& $shipInstance->getY() >= 0 && $shipInstance->getY() < 100
+			// check actual collision
+			&& !$gameInstance->hasCollision($shipInstance)) {
+			app()->get('db')->query("UPDATE vaisseau SET posY = ? WHERE id = ?", [
 				$y,
 				$ship['id']
 			]);
-		echo json_encode([
-			'x' => $ship['posX'],
-			'y' => $y
-		]);
+			echo json_encode([
+				'x' => $ship['posX'],
+				'y' => $y
+			]);
+		} else {
+			// ATOMIC BOMB ! The collisioner dies instantly !
+			echo json_encode('atomic');
+		}
 	}
 	else if (in_array($ship['rot'], ['west', 'east'], true))
 	{
 		$x = $ship['posX'];
 		$x = $ship['rot'] == 'west' ? $x - ($ship['class']::SPEED + $ship['pp_speed']) : $x + ($ship['class']::SPEED + $ship['pp_speed']);
-		app()->get('db')->query("UPDATE vaisseau SET posX = ? WHERE id = ?", [
+
+
+		// check for collisions
+		$shipInstance = new $ship['class']($x, $ship['posY'], new Player('name', Player::ACTIVE, 'sessionid'));
+
+		// no collision, go ahead and move the ship
+		// check bounds in X
+		if ($shipInstance->getX() >= 0 && $shipInstance->getX() < 150
+			// check bounds in Y
+			&& $shipInstance->getY() >= 0 && $shipInstance->getY() < 100
+			// check actual collision
+			&& !$gameInstance->hasCollision($shipInstance)) {
+			app()->get('db')->query("UPDATE vaisseau SET posX = ? WHERE id = ?", [
 				$x,
 				$ship['id']
 			]);
-		echo json_encode([
-			'x' => $x,
-			'y' => $ship['posY']
-		]);
+			echo json_encode([
+				'x' => $x,
+				'y' => $ship['posY']
+			]);
+		} else {
+			// ATOMIC BOMB ! The collisioner dies instantly !
+			echo json_encode('atomic');
+		}
 	}
 
 };

@@ -1,23 +1,22 @@
 <?php
 
-class HonorableDuty extends Ship
+class BlueLeaf extends Ship
 {
-	const W = 10;
+	const W = 12;
 	const H = 12;
-	const SPEED = 15;
-	const SPRITE = "/ex00/img/HonorableDuty_{{dir}}.png";
-
+	const SPEED = 18;
+	
 	public function __construct($x, $y, Player $player)
 	{
-		$name = "Honorable Duty";
+		$name = "Blue Leaf";
 		$w = self::W;
 		$h = self::H;
-		$pp = 10;
-		$pv = 5;
+		$pp = 12;
+		$pv = 3;
 		$speed = self::SPEED;
 		$inertia = 4;
 		$shield = 0;
-		$sprite = self::SPRITE;
+		$sprite = "/ex00/img/BlueLeaf_{{dir}}.png";
 		$weapon = array();
 		parent::__construct($x, $y, $h, $w, $pv, $name, $sprite, $player, $speed, $inertia, $shield, $weapon);
 	}

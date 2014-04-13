@@ -1,0 +1,13 @@
+An Purple Death is a Ship instance with preset values regarding
+the sprite, size, weapons, etc. These are the default values:
+
+name = "Purple Death"
+w = 15
+h = 15
+pp = 18;
+pv = 3
+speed = 11
+inertia = 6
+shield = 1
+sprite = "/ex00/img/BloodPuller_{{dir}}.png"
+weapon = none

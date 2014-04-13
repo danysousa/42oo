@@ -1,23 +1,22 @@
 <?php
 
-class HonorableDuty extends Ship
+class PurpleDeath extends Ship
 {
-	const W = 10;
-	const H = 12;
-	const SPEED = 15;
-	const SPRITE = "/ex00/img/HonorableDuty_{{dir}}.png";
-
+	const W = 15;
+	const H = 15;
+	const SPEED = 11;
+	
 	public function __construct($x, $y, Player $player)
 	{
-		$name = "Honorable Duty";
+		$name = "Purple Death";
 		$w = self::W;
 		$h = self::H;
-		$pp = 10;
-		$pv = 5;
+		$pp = 18;
+		$pv = 3;
 		$speed = self::SPEED;
-		$inertia = 4;
-		$shield = 0;
-		$sprite = self::SPRITE;
+		$inertia = 6;
+		$shield = 1;
+		$sprite = "/ex00/img/PurpleDeath_{{dir}}.png";
 		$weapon = array();
 		parent::__construct($x, $y, $h, $w, $pv, $name, $sprite, $player, $speed, $inertia, $shield, $weapon);
 	}

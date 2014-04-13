@@ -1,0 +1,13 @@
+An Blue Leaf is a Ship instance with preset values regarding
+the sprite, size, weapons, etc. These are the default values:
+
+name = "Blue Leaf"
+w = 12
+h = 12
+pp = 12;
+pv = 3
+speed = 18
+inertia = 4
+shield = 0
+sprite = "/ex00/img/SwordOfAbsolution_{{dir}}.png"
+weapon = none

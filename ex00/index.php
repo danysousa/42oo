@@ -2,6 +2,8 @@
 
 define('GAME_PP', 100);
 
+require_once __DIR__ . '/functions.php';
+
 class App {
 	protected $instances = array();
 

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <HTML>
 	<HEAD>
-		<TITLE>Warhammer Online Battle</TITLE>
+		<TITLE>Awesome Starships Battles II</TITLE>
 		<LINK href="css/profile.css" rel="stylesheet" type="text/css">
 	</HEAD>
 	<BODY>

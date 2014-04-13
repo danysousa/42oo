@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <HTML>
 	<HEAD>
-		<TITLE>Warhammer Online Battle</TITLE>
+		<TITLE>Awesome Starships Battles II</TITLE>
 		<LINK href="css/map.css" rel="stylesheet" type="text/css">
 	</HEAD>
 	<BODY>
@@ -32,7 +32,7 @@
 							<div ng-show="user && game">
 								<div ng-show="user.must_play">
 									<h2>Choose the ship to use this turn</h2>
-									<div ng-show="!selectedShip" value="{{ s.ship_id }}" class="ship" ng-repeat="s in game.ships | filter: { user_id: user.id }" ng-click="selectShip(s.ship_id)" ng-class="{shipSelected: s === selectedShip}">
+									<div ng-show="!selectedShip && s.ship_pv > 0" value="{{ s.ship_id }}" class="ship" ng-repeat="s in game.ships | filter: { user_id: user.id }" ng-click="selectShip(s.ship_id)" ng-class="{shipSelected: s === selectedShip}">
 										<h3>{{ s.ship_class }} [ {{ s.ship_posX }}, {{ s.ship_posY }}]</h3>
 										<img ng-src="img/{{ s.ship_class }}_0.png" alt="">
 									</div>
