@@ -33,6 +33,12 @@ return function() {
 		$game['id']
 	]);
 
+	foreach ($ships as &$s) {
+		$s['ship_sprite'] = $s['ship_class']::SPRITE;
+		$s['ship_h'] = $s['ship_class']::H;
+		$s['ship_w'] = $s['ship_class']::W;
+	}
+
 	$game['ships'] = $ships;
 
 	echo json_encode($game);

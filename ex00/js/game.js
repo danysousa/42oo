@@ -30,21 +30,34 @@
 		}
 	}
 
+	function getDirIndex(dir) {
+		var dirs = {
+			'west': 0,
+			'south': 1,
+			'east': 2,
+			'north': 3
+		};
+		return dirs[dir];
+	}
+
 	function drawObjects(objects)
 	{
 		objects.forEach(function(el, i)
 		{
-			if (el.alive) {
-				var img = new Image(el.w * factor.x, el.h * factor.y);
+			console.dir(el);
+			if (1) {
+				var img = new Image(el.ship_w * factor.x, el.ship_h * factor.y);
+				img.style.outline = '1px solid red';
 				// set the right sprite for the given object direction
-				img.src = el.sprite.replace('{{dir}}', el.direction);
+				img.src = el.ship_sprite.replace('{{dir}}', getDirIndex(el.ship_dir));
 				img.onload = function()
 				{
 					// west or east
 					if (el.direction % 2 === 0)
-						ctx.drawImage(img, el.x * factor.x, el.y * factor.y, el.h * factor.y, el.w * factor.x);
+						//             image,  posX,                 posY,                   width,                height
+						ctx.drawImage(img, el.ship_posX * factor.x, el.ship_posY * factor.y, el.ship_h * factor.y, el.ship_w * factor.x);
 					else
-						ctx.drawImage(img, el.x * factor.x, el.y * factor.y, el.w * factor.x, el.h * factor.y);
+						ctx.drawImage(img, el.ship_posX * factor.x, el.ship_posY * factor.y, el.ship_w * factor.x, el.ship_h * factor.y);
 				}
 			}
 		});
@@ -54,9 +67,17 @@
  
 	game.controller('ActionFormCtrl', function ($http, $scope) {
 		$http.get('index.php?action=xhrUser').success(function(user) {
+			if (!user.must_play) {
+				setInterval(function() {
+					window.location = window.location;
+				}, 5000);
+			}
+
 			$http.get('index.php?action=xhrGame').success(function(game) {
 				$scope.user = user;
 				$scope.game = game;
+
+				drawObjects($scope.game.ships);
 			});
 		});
 
@@ -70,8 +91,6 @@
 				if (el.ship_id === id)
 					$scope.selectedShip = el;
 			});
-						console.dir($scope.selectedShip);
-
 		}
 
 		$scope.percentCalc = function(element) {
@@ -79,12 +98,9 @@
 				$scope.movePointsValue = $scope.maxRange - $scope.weaponPointsValue;
 			else
 				$scope.weaponPointsValue = $scope.maxRange - $scope.movePointsValue;
-						console.dir($scope.selectedShip);
-
 		}
 
 		$scope.submitRepartition = function() {
-			console.dir($scope.selectedShip);
 			$http({
 				url: 'index.php?action=postTurnSubmitRepartition',
 				method: "POST",
@@ -97,7 +113,6 @@
 					weaponPp: parseInt($scope.weaponPointsValue) / $scope.maxRange * MAX_PP
 				}
 			}).success(function(data) {
-				console.dir($scope.selectedShip);
 				$scope.repartitionSubmitted = true;
 			});
 		}
@@ -117,7 +132,6 @@
 				}).success(function(data) {
 					$scope.selectedShip.ship_dir = direction;
 					$scope.rotationDone = true;
-					console.dir($scope.selectedShip);
 				});
 			} else {
 				$scope.rotationDone = true;
@@ -142,7 +156,6 @@
 				$scope.selectedShip.ship_posX = data.x;
 				$scope.selectedShip.ship_posY = data.y;
 				$scope.moved = true;
-				console.dir($scope.selectedShip);
 			});
 		}
 
