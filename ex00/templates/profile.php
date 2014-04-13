@@ -21,7 +21,7 @@
 				<div id="global_block">
 					<div class="menu_block">
 						<div id="badge">
-							<span class="menu_block_typo" id="logname">[<?php echo $_SESSION['login']; ?>]</span><br />
+							<span class="menu_block_typo" id="logname">[<?PHP if(array_key_exists('login', $_SESSION))echo $_SESSION['login']; else echo 'Guest'; ?>]</span><br />
 							<span class="menu_block_typo" id="level">LEVEL[??]</span>
 							<table border="0" id="score_table">
 								<tr>
