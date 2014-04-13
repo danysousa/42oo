@@ -2,8 +2,8 @@
 
 class BlueLeaf extends Ship
 {
-	const W = 7;
-	const H = 12;
+	const W = 12;
+	const H = 7;
 	const SPEED = 18;
 	
 	public function __construct($x, $y, Player $player)

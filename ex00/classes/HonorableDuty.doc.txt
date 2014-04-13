@@ -2,8 +2,8 @@ An HonorableDuty is a Ship instance with preset values regarding
 the sprite, size, weapons, etc. These are the default values:
 
 name = "Honorable Duty"
-w = 8
-h = 11
+w = 11
+h = 8
 pp = 10;
 pv = 5
 speed = 15

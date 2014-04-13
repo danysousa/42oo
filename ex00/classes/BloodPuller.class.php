@@ -2,8 +2,8 @@
 
 class BloodPuller extends Ship
 {
-	const W = 8;
-	const H = 13;
+	const W = 13;
+	const H = 8;
 	const SPEED = 10;
 	
 	public function __construct($x, $y, Player $player)

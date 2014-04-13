@@ -2,8 +2,8 @@ An Blue Leaf is a Ship instance with preset values regarding
 the sprite, size, weapons, etc. These are the default values:
 
 name = "Blue Leaf"
-w = 7
-h = 12
+w = 12
+h = 7
 pp = 12;
 pv = 3
 speed = 18
