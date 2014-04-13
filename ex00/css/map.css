@@ -59,6 +59,24 @@ p
 	padding: 0px;
 }
 
+h2
+{
+	text-decoration: none;
+	font-weight: normal;
+	font-family: monospace;
+	font-size: 20px;
+	color: #52AEF3;
+}
+
+h2
+{
+	text-decoration: none;
+	font-weight: normal;
+	font-family: monospace;
+	font-size: 16px;
+	color: #52AEF3;
+}
+
 hr
 {
 	position: relative;
