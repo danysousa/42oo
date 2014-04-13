@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <HTML>
 	<HEAD>
-		<TITLE>Warhammer Online Battle</TITLE>
+		<TITLE>Awesome Starships Battles II</TITLE>
 		<LINK href="css/lobby.css" rel="stylesheet" type="text/css">
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 	</HEAD>
