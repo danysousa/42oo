@@ -32,14 +32,18 @@ return function() {
 		{
 			$instance = new $value(0, 0, $player);
 			$pv = $instance->getPv();
-			$id = app()->get('db')->query("INSERT INTO vaisseau (class, posX, posY, pv, portee, mobile)
-				VALUES (?, ?, ?, ?, ?, 1)",
+			$id = app()->get('db')->query("INSERT INTO vaisseau (class, posX, posY, pv, portee, mobile, pp_shield, pp_gun, pp_speed, pp_total)
+				VALUES (?, ?, ?, ?, ?, 1, ?, ?, ?, ?)",
 				array(
 					$value,
 					0,
 					0,
 					$pv,
-					'courte'
+					'courte',
+					0,
+					0,
+					0,
+					0
 				));
 			$id = app()->get('db')->query("SELECT id FROM vaisseau ORDER BY id DESC LIMIT 1", array());
 			$partie = app()->get('db')->query("SELECT id_partie FROM user WHERE id LIKE ?", array(

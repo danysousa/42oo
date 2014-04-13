@@ -5,6 +5,11 @@ return function() {
 	if ($_POST && array_key_exists("register_login", $_POST)
 		&& array_key_exists("register_password", $_POST))
 	{
+		if ($_POST["register_password"] == NULL)
+		{
+			header('Location: ./index.php?action=login');
+			die();
+		}
 		$pwd = hash('whirlpool', $_POST['register_password']);
 		$verif = app()->get('db')->query("SELECT name FROM user WHERE name LIKE ?", array($_POST['register_login']));
 		if (!$verif)
